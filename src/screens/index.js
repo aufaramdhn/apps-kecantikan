@@ -1,6 +1,13 @@
 import HomeScreens from './HomeScreens';
+import LoginScreens from './LoginScreens';
 import OnBoardScreens from './OnBoardScreens';
 import ProfileScreens from './ProfileScreens';
 import RegisterScreens from './RegisterScreens';
 
-export {OnBoardScreens, ProfileScreens, HomeScreens, RegisterScreens};
+export {
+  OnBoardScreens,
+  ProfileScreens,
+  HomeScreens,
+  RegisterScreens,
+  LoginScreens,
+};

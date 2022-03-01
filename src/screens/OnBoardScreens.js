@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import React from 'react';
 import RemixIcon from 'react-native-remix-icon';
+import COLORS from '../constant/Colors';
+import {ButtonPrimary} from '../components';
 
 const OnBoardScreens = ({navigation}) => {
   return (
@@ -33,21 +35,29 @@ const OnBoardScreens = ({navigation}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text style={{color: 'white', fontSize: 18}}>
+        <Text
+          style={{
+            color: 'white',
+            fontSize: 18,
+            width: 200,
+            textAlign: 'center',
+            fontSize: 28,
+            marginVertical: 10,
+          }}>
           Let Us Reward You, Naturally
         </Text>
         <TouchableOpacity
           onPress={() => navigation.navigate('RegisterScreens')}>
           <View
             style={{
-              backgroundColor: '#c7c7c7',
-              width: 50,
-              height: 50,
+              backgroundColor: COLORS.primary,
+              width: 70,
+              height: 70,
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 15,
             }}>
-            <RemixIcon name="ri-arrow-right-s-line" color="#fff" size="30" />
+            <RemixIcon name="ri-arrow-right-s-line" color="white" size="30" />
           </View>
         </TouchableOpacity>
       </View>
