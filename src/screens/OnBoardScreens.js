@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   View,
   Image,
+  StatusBar,
 } from 'react-native';
 import React from 'react';
 import RemixIcon from 'react-native-remix-icon';
@@ -14,6 +15,7 @@ import {ButtonPrimary} from '../components';
 const OnBoardScreens = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#000'}}>
+      <StatusBar backgroundColor={COLORS.primary} />
       <View
         style={{
           flex: 2,
@@ -31,7 +33,6 @@ const OnBoardScreens = ({navigation}) => {
       <View
         style={{
           flex: 1,
-          backgroundColor: '#1d1d1d',
           justifyContent: 'center',
           alignItems: 'center',
         }}>

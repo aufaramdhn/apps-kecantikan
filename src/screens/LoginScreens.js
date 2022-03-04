@@ -80,7 +80,11 @@ const LoginScreens = ({navigation}) => {
             }}>
             Lupa Kata Sandi ?
           </Text>
-          <ButtonPrimary title="Masuk" style={{marginVertical: 20}} />
+          <ButtonPrimary
+            title="Masuk"
+            style={{marginVertical: 20}}
+            onPress={() => navigation.navigate('HomeScreens')}
+          />
           <View
             style={{
               flexDirection: 'row',
@@ -88,9 +92,9 @@ const LoginScreens = ({navigation}) => {
               alignItems: 'center',
               marginBottom: 30,
             }}>
-            <Text style={styles.textLogin}>Sudah Punya Akun?</Text>
+            <Text style={styles.textLogin}>Belum Memiliki Akun?</Text>
             <TouchableOpacity
-              onPress={() => navigation.navigate('LoginScreens')}>
+              onPress={() => navigation.navigate('RegisterScreens')}>
               <Text
                 style={[
                   styles.textLogin,
@@ -100,7 +104,7 @@ const LoginScreens = ({navigation}) => {
                     marginLeft: 5,
                   },
                 ]}>
-                Masuk
+                Daftar
               </Text>
             </TouchableOpacity>
           </View>

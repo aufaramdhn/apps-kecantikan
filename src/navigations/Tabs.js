@@ -1,7 +1,13 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {HomeScreens, ProfileScreens} from '../screens';
+import {
+  HomeScreens,
+  ProfileScreens,
+  ChatScreens,
+  CartScreens,
+} from '../screens';
 import RemixIcon from 'react-native-remix-icon';
+import COLORS from '../constant/Colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,19 +20,32 @@ const Tabs = () => {
 
           if (route.name === 'Home') {
             iconName = focused ? 'ri-home-3-fill' : 'ri-home-3-line';
+          } else if (route.name === 'Chat') {
+            iconName = focused ? 'ri-chat-3-fill' : 'ri-chat-3-line';
+          } else if (route.name === 'Cart') {
+            iconName = focused
+              ? 'ri-shopping-cart-fill'
+              : 'ri-shopping-cart-line';
           } else if (route.name === 'Settings') {
-            iconName = focused ? 'ri-user-3-fill' : 'ri-user-line';
+            iconName = focused ? 'ri-user-fill' : 'ri-user-line';
           }
 
           // You can return any component that you like here!
-          return <RemixIcon name={iconName} size={size} color={color} />;
+          return <RemixIcon name={iconName} size="30" color={color} />;
         },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: COLORS.primary,
+        tabBarInactiveTintColor: COLORS.primary,
         headerShown: false,
         tabBarShowLabel: false,
+        tabBarStyle: {
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          height: '10%',
+        },
       })}>
       <Tab.Screen name="Home" component={HomeScreens} />
+      <Tab.Screen name="Chat" component={ChatScreens} />
+      <Tab.Screen name="Cart" component={CartScreens} />
       <Tab.Screen name="Settings" component={ProfileScreens} />
     </Tab.Navigator>
   );
