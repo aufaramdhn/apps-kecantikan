@@ -9,6 +9,7 @@ import {
   HomeScreens,
   PaymentScreens,
   DetailScreens,
+  EditProfileScreens,
 } from './src/screens';
 import Tabs from './src/navigations/Tabs';
 
@@ -28,6 +29,10 @@ const App = () => {
         <Stack.Screen name="HomeScreens" component={Tabs} />
         <Stack.Screen name="PaymentScreens" component={PaymentScreens} />
         <Stack.Screen name="DetailScreens" component={DetailScreens} />
+        <Stack.Screen
+          name="EditProfileScreens"
+          component={EditProfileScreens}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

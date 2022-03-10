@@ -1,6 +1,7 @@
 import CartScreens from './CartScreens';
 import ChatScreens from './ChatScreens';
 import DetailScreens from './DetailScreens';
+import EditProfileScreens from './EditProfileScreens';
 import HomeScreens from './HomeScreens';
 import LoginScreens from './LoginScreens';
 import OnBoardScreens from './OnBoardScreens';
@@ -18,4 +19,5 @@ export {
   ChatScreens,
   PaymentScreens,
   DetailScreens,
+  EditProfileScreens,
 };
