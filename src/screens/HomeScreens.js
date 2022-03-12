@@ -6,7 +6,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  StatusBar,
+  FlatList,
   ScrollView,
 } from 'react-native';
 import React, {useState} from 'react';
@@ -17,12 +17,6 @@ import Face from '../constant/DataFace';
 import Skincare from '../constant/DataSkincare';
 
 const HomeScreens = ({navigation}) => {
-  const [onClick, setOnClick] = useState(false);
-
-  const onHandleClick = () => {
-    setOnClick(!onClick);
-  };
-
   return (
     <SafeAreaView style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -184,35 +178,37 @@ const HomeScreens = ({navigation}) => {
             justifyContent: 'center',
             marginVertical: 30,
           }}>
-          {onClick ? (
-            <SafeAreaView style={{backgroundColor: COLORS.grey}}>
-              <Text>Halo</Text>
-            </SafeAreaView>
-          ) : (
-            <TouchableOpacity onPress={() => onHandleClick(true)}>
-              <Text
-                style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
-                Face
-              </Text>
-            </TouchableOpacity>
-          )}
-
-          <Text style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
-            Body
-          </Text>
-          <Text style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
-            Hair
-          </Text>
-          <Text style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
-            Tooth
-          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('NewScreens')}>
+            <Text
+              style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
+              Face
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text
+              style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
+              Body
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text
+              style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
+              Hair
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text
+              style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
+              Tooth
+            </Text>
+          </TouchableOpacity>
         </View>
         <View
           style={{
             flexDirection: 'row',
             alignSelf: 'center',
           }}>
-          {Skincare.map((item, id) => {
+          {Skincare.map(item => {
             return (
               <View
                 key={item.id}
@@ -233,7 +229,12 @@ const HomeScreens = ({navigation}) => {
                     />
                   </TouchableOpacity>
                   <Text
-                    style={{fontSize: 18, marginLeft: 10, fontWeight: 'bold'}}>
+                    style={{
+                      fontSize: 18,
+                      marginLeft: 10,
+                      marginTop: 10,
+                      fontWeight: 'bold',
+                    }}>
                     {item.name}
                   </Text>
                   <Text style={{fontSize: 14, marginLeft: 10}}>
@@ -335,4 +336,19 @@ const HomeScreens = ({navigation}) => {
 
 export default HomeScreens;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  backContainer: {
+    paddingBottom: 20,
+    flex: 1,
+  },
+  containerFood: {
+    backgroundColor: COLORS.lightGray,
+    marginRight: 10,
+    marginTop: 10,
+    marginBottom: 15,
+    marginHorizontal: 15,
+    borderRadius: 20,
+    paddingBottom: 20,
+    elevation: 5,
+  },
+});

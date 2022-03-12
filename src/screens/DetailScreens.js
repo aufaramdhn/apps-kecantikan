@@ -11,7 +11,7 @@ import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
 import {ButtonPrimary} from '../components';
 
-const DetailScreens = ({route}) => {
+const DetailScreens = ({route, navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{paddingHorizontal: 20, paddingVertical: 5}}>
@@ -142,7 +142,11 @@ const DetailScreens = ({route}) => {
             <Text style={{fontSize: 18, fontWeight: '400'}}>2</Text>
             <RemixIcon name="ri-add-line" />
           </View>
-          <ButtonPrimary title="Cart" style={{paddingHorizontal: 20}} />
+          <ButtonPrimary
+            title="Cart"
+            style={{paddingHorizontal: 20}}
+            onPress={() => navigation.navigate('ShoppingBagScreens')}
+          />
         </View>
       </View>
     </SafeAreaView>

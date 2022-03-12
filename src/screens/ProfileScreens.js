@@ -70,6 +70,7 @@ const ProfileScreens = ({navigation}) => {
               paddingVertical: 10,
               marginHorizontal: 20,
               alignItems: 'center',
+              marginTop: 10,
             }}>
             <View
               style={{
@@ -101,7 +102,8 @@ const ProfileScreens = ({navigation}) => {
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
-              margin: 20,
+              marginVertical: 30,
+              marginHorizontal: 20,
             }}>
             <View style={{alignItems: 'center'}}>
               <RemixIcon
@@ -143,7 +145,7 @@ const ProfileScreens = ({navigation}) => {
             marginHorizontal: 20,
           }}>
           <View style={{borderBottomWidth: 1}}>
-            <Text style={{marginTop: 20, marginBottom: 10}}>
+            <Text style={{marginTop: 20, marginBottom: 10, fontSize: 18}}>
               Transaksi Terakhir
             </Text>
           </View>
@@ -171,7 +173,7 @@ const ProfileScreens = ({navigation}) => {
                     <View style={{}}>
                       <Text
                         style={{
-                          fontSize: 18,
+                          fontSize: 16,
                           color: '#1d1d1d',
                           fontWeight: '400',
                         }}>
@@ -189,7 +191,7 @@ const ProfileScreens = ({navigation}) => {
                     <View style={{alignItems: 'flex-end'}}>
                       <Text
                         style={{
-                          fontSize: 18,
+                          fontSize: 16,
                           color: '#1d1d1d',
                           fontWeight: '400',
                         }}>

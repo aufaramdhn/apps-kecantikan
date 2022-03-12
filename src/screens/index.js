@@ -8,6 +8,8 @@ import OnBoardScreens from './OnBoardScreens';
 import PaymentScreens from './PaymentScreens';
 import ProfileScreens from './ProfileScreens';
 import RegisterScreens from './RegisterScreens';
+import NewScreens from './NewScreens';
+import ShoppingBagScreens from './ShoppingBagScreens';
 
 export {
   OnBoardScreens,
@@ -20,4 +22,6 @@ export {
   PaymentScreens,
   DetailScreens,
   EditProfileScreens,
+  NewScreens,
+  ShoppingBagScreens,
 };

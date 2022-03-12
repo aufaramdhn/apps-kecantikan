@@ -4,6 +4,7 @@ export const COLORS = {
   blue: '#4285F4',
   white: '#FAFAFA',
   grey: '#c7c7c7',
+  green: '#616D57',
 };
 
 export default COLORS;

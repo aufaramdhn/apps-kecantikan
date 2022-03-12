@@ -4,7 +4,7 @@ import COLORS from '../constant/Colors';
 
 const ButtonPrimary = props => {
   return (
-    <View style={{paddingHorizontal: 10}}>
+    <View style={[props.padding, {paddingHorizontal: 10}]}>
       <TouchableOpacity
         onPress={props.onPress}
         style={[
