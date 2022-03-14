@@ -133,10 +133,11 @@ const Component1 = () => {
         </View>
         <View
           style={{
-            flex: 1,
+            flex: 2,
           }}>
           <TouchableOpacity
             style={{
+              flex: 1,
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
