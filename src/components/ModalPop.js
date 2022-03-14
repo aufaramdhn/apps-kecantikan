@@ -48,7 +48,13 @@ const ModalPop = () => {
       </View>
       <TouchableOpacity
         onPress={() => setModalVisible(true)}
-        style={{flexDirection: 'row'}}>
+        style={{
+          flexDirection: 'row',
+          borderBottomWidth: 1,
+          borderColor: COLORS.grey,
+          paddingBottom: 5,
+          marginTop: 10,
+        }}>
         <RemixIcon name="ri-truck-fill" />
         <View
           style={{
@@ -56,7 +62,15 @@ const ModalPop = () => {
             justifyContent: 'space-between',
             width: '94%',
           }}>
-          <Text>Opsi Pengiriman</Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: '400',
+              color: '#1d1d1d',
+              marginLeft: 7,
+            }}>
+            Opsi Pengiriman
+          </Text>
           <RemixIcon name="ri-arrow-right-s-line" />
         </View>
       </TouchableOpacity>

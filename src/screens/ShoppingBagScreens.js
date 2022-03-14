@@ -23,12 +23,15 @@ const ShoppingBagScreens = () => {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
+            padding: 10,
           }}>
-          <RemixIcon name="ri-arrow-left-s-line" />
-          <Text>Shopping Bag</Text>
-          <RemixIcon name="ri-shopping-cart-2-line" />
+          <RemixIcon name="ri-arrow-left-s-line" size="30" color="#1d1d1d" />
+          <Text style={{fontSize: 24, fontWeight: 'bold', color: '#1d1d1d'}}>
+            Shopping Bag
+          </Text>
+          <RemixIcon name="ri-shopping-cart-2-line" size="30" color="#1d1d1d" />
         </View>
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, paddingHorizontal: 20}}>
           {ShoppingBag.map(item => {
             return (
               <View
@@ -42,12 +45,12 @@ const ShoppingBagScreens = () => {
                 </View>
                 <View style={{justifyContent: 'center', paddingLeft: 10}}>
                   <Text
-                    style={{fontSize: 14, fontWeight: '500', color: '#545454'}}>
+                    style={{fontSize: 18, fontWeight: '500', color: '#545454'}}>
                     {item.name}
                   </Text>
                   <Text
                     style={{
-                      fontSize: 14,
+                      fontSize: 13,
                       fontWeight: '400',
                       color: '#545454',
                     }}>
@@ -57,6 +60,7 @@ const ShoppingBagScreens = () => {
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
+                      alignItems: 'center',
                       width: '72%',
                     }}>
                     <Text
@@ -67,14 +71,24 @@ const ShoppingBagScreens = () => {
                       }}>
                       {item.price}
                     </Text>
-                    <View style={{flexDirection: 'row'}}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                      }}>
                       <RemixIcon
-                        name="ri-subtract-fill"
+                        name="ri-indeterminate-circle-line"
                         size="26"
                         color="#1d1d1d"
                       />
-                      <Text>2</Text>
-                      <RemixIcon name="ri-add-fill" size="26" color="#1d1d1d" />
+                      <Text style={{color: '#1d1d1d', marginHorizontal: 5}}>
+                        2
+                      </Text>
+                      <RemixIcon
+                        name="ri-add-circle-fill"
+                        size="26"
+                        color="#1d1d1d"
+                      />
                     </View>
                   </View>
                 </View>
@@ -82,22 +96,61 @@ const ShoppingBagScreens = () => {
             );
           })}
         </View>
-        <View>
-          <View>
-            <TextInput />
-            <Text>Apply</Text>
+
+        <View
+          style={{
+            backgroundColor: '#fff',
+            flexDirection: 'row',
+            alignItems: 'center',
+            margin: 30,
+            paddingRight: 30,
+            borderRadius: 10,
+          }}>
+          <TextInput
+            placeholder="Promo Code"
+            style={{width: '90%', paddingLeft: 20}}
+          />
+          <View
+            style={{
+              backgroundColor: COLORS.primary,
+              paddingVertical: 2,
+              paddingHorizontal: 8,
+              borderRadius: 5,
+            }}>
+            <Text style={{color: '#fff'}}>Apply</Text>
           </View>
         </View>
-        <View style={{flexDirection: 'row'}}>
-          <Text>Total Pesanan</Text>
-          <Text>Rp. 140.000</Text>
-        </View>
-        <View>
-          <Text>Catatan</Text>
-          <TextInput />
-        </View>
-        <View>
-          <View style={{flexDirection: 'row'}}>
+        <View style={{paddingHorizontal: 20}}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{fontSize: 16, fontWeight: 'bold', color: '#1d1d1d'}}>
+              Total Pesanan
+            </Text>
+            <Text style={{fontSize: 16, fontWeight: 'bold', color: '#FF3D00'}}>
+              Rp. 140.000
+            </Text>
+          </View>
+          <View style={{marginTop: 20}}>
+            <Text style={{fontSize: 16, fontWeight: 'bold', color: '#1d1d1d'}}>
+              Catatan
+            </Text>
+            <TextInput
+              multiline={true}
+              numberOfLines={4}
+              style={{
+                backgroundColor: '#c7c7c7',
+                borderRadius: 5,
+                marginTop: 15,
+              }}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              borderBottomWidth: 1,
+              borderColor: COLORS.grey,
+              paddingBottom: 5,
+              marginTop: 10,
+            }}>
             <RemixIcon name="ri-wallet-fill" />
             <View
               style={{
@@ -105,28 +158,90 @@ const ShoppingBagScreens = () => {
                 justifyContent: 'space-between',
                 width: '94%',
               }}>
-              <Text>Metode Pembayaran</Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: '400',
+                  color: '#1d1d1d',
+                  marginLeft: 7,
+                }}>
+                Metode Pembayaran
+              </Text>
               <RemixIcon name="ri-arrow-right-s-line" />
             </View>
           </View>
           <ModalPop />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              borderBottomWidth: 1,
+              paddingBottom: 15,
+              borderColor: COLORS.grey,
+            }}>
             <View>
-              <Text>Subtotal Product</Text>
-              <Text>Subtotal Pengiriman</Text>
-              <Text>Lainnya</Text>
+              <Text
+                style={{
+                  marginTop: 15,
+                  fontSize: 16,
+                  fontWeight: '400',
+                  color: '#1d1d1d',
+                }}>
+                Subtotal Product
+              </Text>
+              <Text
+                style={{
+                  marginTop: 15,
+                  fontSize: 16,
+                  fontWeight: '400',
+                  color: '#1d1d1d',
+                }}>
+                Subtotal Pengiriman
+              </Text>
+              <Text
+                style={{
+                  marginTop: 15,
+                  fontSize: 16,
+                  fontWeight: '400',
+                  color: '#1d1d1d',
+                }}>
+                Lainnya
+              </Text>
             </View>
             <View style={{alignItems: 'flex-end'}}>
-              <Text>Rp. 1.400.000</Text>
-              <Text>Rp. 0</Text>
-              <Text>Rp. 0</Text>
+              <Text
+                style={{
+                  marginTop: 15,
+                  fontSize: 16,
+                  fontWeight: '400',
+                }}>
+                Rp. 1.400.000
+              </Text>
+              <Text style={{marginTop: 15, fontSize: 16, fontWeight: '400'}}>
+                Rp. 0
+              </Text>
+              <Text style={{marginTop: 15, fontSize: 16, fontWeight: '400'}}>
+                Rp. 0
+              </Text>
             </View>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text>Total Pembayaran</Text>
-            <Text>Rp. 1.444.000</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 18,
+            }}>
+            <Text style={{fontSize: 16, fontWeight: 'bold', color: '#1d1d1d'}}>
+              Total Pembayaran
+            </Text>
+            <Text style={{fontSize: 16, fontWeight: 'bold', color: '#FF3D00'}}>
+              Rp. 1.444.000
+            </Text>
           </View>
-          <ButtonPrimary title="Procesed To Checkout" />
+          <ButtonPrimary
+            title="Procesed To Checkout"
+            style={{marginVertical: 30}}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

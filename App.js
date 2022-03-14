@@ -11,6 +11,7 @@ import {
   EditProfileScreens,
   NewScreens,
   ShoppingBagScreens,
+  Component1,
 } from './src/screens';
 import Tabs from './src/navigations/Tabs';
 
@@ -24,7 +25,7 @@ const App = () => {
           headerShown: false,
         }}
         intialRouteName={'Home'}>
-        <Stack.Screen name="OnBoardScreens" component={OnBoardScreens} />
+        {/* <Stack.Screen name="OnBoardScreens" component={OnBoardScreens} />
         <Stack.Screen name="RegisterScreens" component={RegisterScreens} />
         <Stack.Screen name="LoginScreens" component={LoginScreens} />
         <Stack.Screen name="HomeScreens" component={Tabs} />
@@ -38,7 +39,8 @@ const App = () => {
         <Stack.Screen
           name="EditProfileScreens"
           component={EditProfileScreens}
-        />
+        /> */}
+        <Stack.Screen name="Component1" component={Component1} />
       </Stack.Navigator>
     </NavigationContainer>
   );

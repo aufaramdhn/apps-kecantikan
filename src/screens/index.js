@@ -10,6 +10,7 @@ import ProfileScreens from './ProfileScreens';
 import RegisterScreens from './RegisterScreens';
 import NewScreens from './NewScreens';
 import ShoppingBagScreens from './ShoppingBagScreens';
+import Component1 from './Component1';
 
 export {
   OnBoardScreens,
@@ -24,4 +25,5 @@ export {
   EditProfileScreens,
   NewScreens,
   ShoppingBagScreens,
+  Component1,
 };
