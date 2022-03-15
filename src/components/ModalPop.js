@@ -12,8 +12,42 @@ import RemixIcon from 'react-native-remix-icon';
 import {ButtonPrimary} from '.';
 import COLORS from '../constant/Colors';
 
+const Ekspedisi = [
+  {
+    id: '1',
+    ekspedisi: 'JNE (Reguler)',
+    price: 'Rp. 9.000',
+    est: 'Estimasi 2-3 hari',
+  },
+  {
+    id: '2',
+    ekspedisi: 'J&T Express',
+    price: 'Rp. 10.000',
+    est: 'Estimasi 2-3 hari',
+  },
+  {
+    id: '3',
+    ekspedisi: 'Tiki',
+    price: 'Rp. 5.000',
+    est: 'Estimasi 1-2 hari',
+  },
+  {
+    id: '4',
+    ekspedisi: 'Sicepat',
+    price: 'Rp. 15.000',
+    est: 'Estimasi 1-2 hari',
+  },
+  {
+    id: '5',
+    ekspedisi: 'Ninja Express',
+    price: 'Rp. 13.000',
+    est: 'Estimasi 1-2 hari',
+  },
+];
+
 const ModalPop = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [selected, setSelected] = useState();
   return (
     <View>
       <View style={styles.centeredView}>
@@ -27,21 +61,69 @@ const ModalPop = () => {
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <RemixIcon
-                name="ri-checkbox-circle-line"
-                color={COLORS.primary}
-                size="100"
-                style={{marginBottom: 25}}
-              />
-              <Text style={styles.modalText}>
-                Selamat! Akun Kamu berhasil terdaftar. Yuk, Masuk dengan
-                username dan passwordmu
-              </Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}>
-                <Text style={styles.textStyle}>Masuk Sekarang</Text>
-              </Pressable>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  borderBottomWidth: 1,
+                  borderColor: COLORS.grey,
+                  paddingBottom: 5,
+                }}>
+                <Text
+                  style={{fontSize: 18, color: '#1d1d1d', fontWeight: 'bold'}}>
+                  Pilih Jasa Ekspedisi
+                </Text>
+                <TouchableOpacity
+                  onPress={() => setModalVisible(!modalVisible)}>
+                  <RemixIcon name="ri-close-fill" color="#1d1d1d" />
+                </TouchableOpacity>
+              </View>
+              {Ekspedisi.map(e => {
+                return (
+                  <View
+                    key={e.id}
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      borderBottomWidth: 1,
+                      borderColor: COLORS.grey,
+                      paddingVertical: 5,
+                    }}>
+                    <View style={{paddingRight: 90}}>
+                      <View style={{flexDirection: 'row'}}>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            color: '#1d1d1d',
+                            fontWeight: 'bold',
+                          }}>
+                          {e.ekspedisi}
+                        </Text>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            color: '#F1D00A',
+                            fontWeight: 'bold',
+                            marginLeft: 4,
+                          }}>
+                          {e.price}
+                        </Text>
+                      </View>
+                      <Text style={{fontSize: 16, color: '#1d1d1d'}}>
+                        {e.est}
+                      </Text>
+                    </View>
+                    <TouchableOpacity onPress={() => setSelected(e.id)}>
+                      <RemixIcon
+                        name="ri-check-fill"
+                        color={selected === e.id ? COLORS.succes : COLORS.grey}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                );
+              })}
             </View>
           </View>
         </Modal>
@@ -89,7 +171,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 35,
-    alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

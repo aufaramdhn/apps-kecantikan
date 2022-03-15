@@ -10,6 +10,7 @@ import ProfileScreens from './ProfileScreens';
 import RegisterScreens from './RegisterScreens';
 import NewScreens from './NewScreens';
 import ShoppingBagScreens from './ShoppingBagScreens';
+import MessagesScreens from './MessagesScreens';
 import Component1 from './Component1';
 
 export {
@@ -25,5 +26,6 @@ export {
   EditProfileScreens,
   NewScreens,
   ShoppingBagScreens,
+  MessagesScreens,
   Component1,
 };

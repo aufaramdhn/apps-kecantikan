@@ -10,11 +10,10 @@ import {
 import React from 'react';
 import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
-import {ButtonPrimary} from '../components';
 
 const OnBoardScreens = ({navigation}) => {
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#000'}}>
+    <SafeAreaView style={{flex: 1}}>
       <StatusBar backgroundColor={COLORS.primary} />
       <View
         style={{
@@ -38,7 +37,7 @@ const OnBoardScreens = ({navigation}) => {
         }}>
         <Text
           style={{
-            color: 'white',
+            color: '#1d1d1d',
             fontSize: 18,
             width: 200,
             textAlign: 'center',

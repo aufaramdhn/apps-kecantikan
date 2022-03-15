@@ -15,22 +15,10 @@ import COLORS from '../constant/Colors';
 import ShoppingBag from '../constant/ShoppingBag';
 import ModalPop from '../components/ModalPop';
 
-const ShoppingBagScreens = () => {
+const ShoppingBagScreens = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            padding: 10,
-          }}>
-          <RemixIcon name="ri-arrow-left-s-line" size="30" color="#1d1d1d" />
-          <Text style={{fontSize: 24, fontWeight: 'bold', color: '#1d1d1d'}}>
-            Shopping Bag
-          </Text>
-          <RemixIcon name="ri-shopping-cart-2-line" size="30" color="#1d1d1d" />
-        </View>
         <View style={{flex: 1, paddingHorizontal: 20}}>
           {ShoppingBag.map(item => {
             return (
@@ -96,7 +84,6 @@ const ShoppingBagScreens = () => {
             );
           })}
         </View>
-
         <View
           style={{
             backgroundColor: '#fff',
@@ -108,17 +95,17 @@ const ShoppingBagScreens = () => {
           }}>
           <TextInput
             placeholder="Promo Code"
-            style={{width: '90%', paddingLeft: 20}}
+            style={{width: '90%', paddingLeft: 20, paddingVertical: 20}}
           />
-          <View
+          <TouchableOpacity
             style={{
               backgroundColor: COLORS.primary,
-              paddingVertical: 2,
+              paddingVertical: 4,
               paddingHorizontal: 8,
               borderRadius: 5,
             }}>
             <Text style={{color: '#fff'}}>Apply</Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={{paddingHorizontal: 20}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -137,13 +124,14 @@ const ShoppingBagScreens = () => {
               multiline={true}
               numberOfLines={4}
               style={{
-                backgroundColor: '#c7c7c7',
+                backgroundColor: COLORS.white,
                 borderRadius: 5,
                 marginTop: 15,
               }}
             />
           </View>
-          <View
+          <TouchableOpacity
+            onPress={() => navigation.navigate('PaymentScreens')}
             style={{
               flexDirection: 'row',
               borderBottomWidth: 1,
@@ -169,7 +157,7 @@ const ShoppingBagScreens = () => {
               </Text>
               <RemixIcon name="ri-arrow-right-s-line" />
             </View>
-          </View>
+          </TouchableOpacity>
           <ModalPop />
           <View
             style={{

@@ -11,6 +11,57 @@ import RemixIcon from 'react-native-remix-icon';
 import {ButtonPrimary} from '../components';
 import COLORS from '../constant/Colors';
 
+const ListBank = [
+  {
+    id: '1',
+    bank: 'Bank BCA (Dicek otomatis)',
+    image: require('../assets/bca.png'),
+  },
+  {
+    id: '2',
+    bank: 'Bank Mandiri & Lainnya (Dicek otomatis)',
+    image: require('../assets/mandiri.png'),
+  },
+  {
+    id: '3',
+    bank: 'Bank BNI (Dicek otomatis)',
+    image: require('../assets/bni.png'),
+  },
+  {
+    id: '4',
+    bank: 'Bank BRI (Dicek otomatis)',
+    image: require('../assets/bri.png'),
+  },
+  {
+    id: '5',
+    bank: 'Bank Lainnya (Dicek otomatis)',
+    image: require('../assets/more-line.png'),
+  },
+];
+
+const MetodePembayaran = [
+  {
+    id: '1',
+    name: 'indomaret',
+    image: require('../assets/indomaret.png'),
+  },
+  {
+    id: '2',
+    name: 'Alfamart',
+    image: require('../assets/alfa.jpg'),
+  },
+  {
+    id: '3',
+    name: 'Gopay',
+    image: require('../assets/gopay 2.jpg'),
+  },
+  {
+    id: '4',
+    name: 'Akulaku',
+    image: require('../assets/akulaku.jpg'),
+  },
+];
+
 const Payment = props => {
   return (
     <View
@@ -21,7 +72,10 @@ const Payment = props => {
         borderColor: COLORS.grey,
       }}>
       <View style={{width: '95%', marginHorizontal: 10}}>
-        <Image source={props.source} />
+        <Image
+          source={props.source}
+          style={{width: 25, height: 25, borderRadius: 25 / 2}}
+        />
         <View
           style={{
             flexDirection: 'row',
@@ -43,6 +97,7 @@ const Payment = props => {
 
 const PaymentScreens = ({navigation}) => {
   const [onClick, setOnClick] = useState(false);
+  const [selected, setSelected] = useState();
 
   const onClickOpen = () => {
     setOnClick(!onClick);
@@ -57,7 +112,7 @@ const PaymentScreens = ({navigation}) => {
           backgroundColor: '#FAFAFA',
           padding: 10,
         }}>
-        <TouchableOpacity onPress={() => navigation.navigate()}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <RemixIcon
             name="ri-arrow-left-circle-line"
             size={38}
@@ -75,90 +130,56 @@ const PaymentScreens = ({navigation}) => {
         </Text>
       </View>
       <View style={{flex: 1}}>
-        <Payment title="Transfer Bank" icon="ri-arrow-right-s-line" />
+        <Payment
+          title="Transfer Bank"
+          icon="ri-arrow-right-s-line"
+          source={require('../assets/arrow-left-right-line.png')}
+        />
         {onClick ? (
           <>
             <Payment
               title="Kartu Kredit / Debit nline"
               icon="ri-arrow-down-s-line"
               onPress={() => onClickOpen(true)}
+              source={require('../assets/bank-card-fill.png')}
             />
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                borderBottomWidth: 1,
-                borderColor: COLORS.grey,
-                marginLeft: 50,
-                paddingVertical: 5,
-              }}>
-              <Text>Bank BCA (Dicek otomatis)</Text>
-              <RemixIcon
-                style={{marginRight: 20}}
-                name="ri-checkbox-blank-circle-line"
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                borderBottomWidth: 1,
-                borderColor: COLORS.grey,
-                marginLeft: 50,
-                paddingVertical: 5,
-              }}>
-              <Text>Bank Mandiri & Lainnya (Dicek otomatis)</Text>
-              <RemixIcon
-                style={{marginRight: 20}}
-                name="ri-checkbox-blank-circle-line"
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                borderBottomWidth: 1,
-                borderColor: COLORS.grey,
-                marginLeft: 50,
-                paddingVertical: 5,
-              }}>
-              <Text>Bank BNI (Dicek otomatis)</Text>
-              <RemixIcon
-                style={{marginRight: 20}}
-                name="ri-checkbox-blank-circle-line"
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                borderBottomWidth: 1,
-                borderColor: COLORS.grey,
-                marginLeft: 50,
-                paddingVertical: 5,
-              }}>
-              <Text>Bank BRI (Dicek otomatis)</Text>
-              <RemixIcon
-                style={{marginRight: 20}}
-                name="ri-checkbox-blank-circle-line"
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                borderBottomWidth: 1,
-                borderColor: COLORS.grey,
-                marginLeft: 50,
-                paddingVertical: 5,
-              }}>
-              <Text>Bank Lainnya (Dicek otomatis)</Text>
-              <RemixIcon
-                style={{marginRight: 20}}
-                name="ri-checkbox-blank-circle-line"
-                s
-              />
-            </View>
+            {ListBank.map(e => {
+              return (
+                <View
+                  key={e.id}
+                  style={{
+                    borderBottomWidth: 1,
+                    borderColor: COLORS.grey,
+                    marginLeft: 50,
+                    paddingVertical: 5,
+                  }}>
+                  <Image
+                    source={e.image}
+                    style={{width: 25, height: 25, borderRadius: 25 / 2}}
+                  />
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }}>
+                    <Text>{e.bank}</Text>
+                    <TouchableOpacity onPress={() => setSelected(e.bank)}>
+                      <RemixIcon
+                        style={{marginRight: 20}}
+                        name={
+                          selected === e.bank
+                            ? 'ri-checkbox-circle-line'
+                            : 'ri-checkbox-blank-circle-line'
+                        }
+                        color={
+                          selected === e.bank ? COLORS.primary : COLORS.grey
+                        }
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              );
+            })}
           </>
         ) : (
           <Payment
@@ -167,16 +188,50 @@ const PaymentScreens = ({navigation}) => {
             onPress={() => onClickOpen(true)}
           />
         )}
-
-        <Payment title="Indomart" icon="ri-checkbox-blank-circle-line" />
-        <Payment title="Alfamart" icon="ri-checkbox-blank-circle-line" />
-        <Payment title="Gopay" icon="ri-checkbox-blank-circle-line" />
-        <Payment title="Akulaku" icon="ri-checkbox-blank-circle-line" />
+        {MetodePembayaran.map(i => {
+          return (
+            <View
+              key={i.id}
+              style={{
+                flexDirection: 'row',
+                borderBottomWidth: 1,
+                padding: 10,
+                borderColor: COLORS.grey,
+              }}>
+              <View style={{width: '95%', marginHorizontal: 10}}>
+                <Image
+                  source={i.image}
+                  style={{width: 25, height: 25, borderRadius: 25 / 2}}
+                />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <Text style={{fontSize: 20, fontWeight: '400'}}>
+                    {i.name}
+                  </Text>
+                  <TouchableOpacity onPress={() => setSelected(i.name)}>
+                    <RemixIcon
+                      name={
+                        selected === i.name
+                          ? 'ri-checkbox-circle-line'
+                          : 'ri-checkbox-blank-circle-line'
+                      }
+                      color={selected === i.name ? COLORS.primary : COLORS.grey}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          );
+        })}
       </View>
       <View style={{marginVertical: 50}}>
         <ButtonPrimary
           title="Konfirmasi"
           icon="ri-checkbox-blank-circle-line"
+          onPress={() => navigation.goBack()}
         />
       </View>
     </SafeAreaView>

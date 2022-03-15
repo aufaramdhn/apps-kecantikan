@@ -11,7 +11,6 @@ import {
 import React, {useState} from 'react';
 import RemixIcon from 'react-native-remix-icon';
 import {ButtonPrimary} from '../components';
-import CheckBox from '@react-native-community/checkbox';
 import COLORS from '../constant/Colors';
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -20,8 +19,6 @@ const EditProfileScreen = ({navigation}) => {
   const [selectedProvinsi, setSelectedProvinsi] = useState();
   const [selectedKotaKab, setSelectedKotaKab] = useState();
   const [selectedKecamatan, setSelectedKecamatan] = useState();
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
-  const [toggleCheckBox1, setToggleCheckBox1] = useState(false);
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
@@ -42,47 +39,6 @@ const EditProfileScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: 15,
-            backgroundColor: 'white',
-          }}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <RemixIcon
-                name="ri-arrow-left-circle-line"
-                color={COLORS.primary}
-                size="40"
-              />
-            </TouchableOpacity>
-            <Text
-              style={{
-                fontSize: 18,
-                fontWeight: 'bold',
-                color: '#1d1d1d',
-                marginLeft: 10,
-              }}>
-              Profile
-            </Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              width: '20%',
-            }}>
-            <RemixIcon name="ri-shopping-cart-line" color="#1d1d1d" size="28" />
-            <RemixIcon
-              name="ri-notification-3-line"
-              color="#1d1d1d"
-              size="28"
-            />
-          </View>
-        </View>
         <View
           style={{
             flex: 1,
@@ -128,19 +84,9 @@ const EditProfileScreen = ({navigation}) => {
                 marginTop: 10,
               }}>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <CheckBox
-                  disabled={false}
-                  value={toggleCheckBox}
-                  onValueChange={newValue => setToggleCheckBox(newValue)}
-                />
                 <Text>Perempuan</Text>
               </View>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <CheckBox
-                  disabled={false}
-                  value={toggleCheckBox1}
-                  onValueChange={newValue => setToggleCheckBox1(newValue)}
-                />
                 <Text>Laki-laki</Text>
               </View>
             </View>

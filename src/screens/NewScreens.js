@@ -11,8 +11,10 @@ import React from 'react';
 import COLORS from '../constant/Colors';
 import RemixIcon from 'react-native-remix-icon';
 import NewFace from '../constant/NewFace';
+import {useNavigation} from '@react-navigation/native';
 
-const CardPopuler = ({item, navigation}) => {
+const CardPopuler = ({item}) => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -24,7 +26,8 @@ const CardPopuler = ({item, navigation}) => {
         marginBottom: 20,
       }}>
       <View>
-        <TouchableOpacity onPress={() => navigation.navigate('DetailScreens')}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('DetailScreens', {data: item})}>
           <Image
             source={item.image}
             style={{width: 165, height: 160, borderRadius: 20}}
