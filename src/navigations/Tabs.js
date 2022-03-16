@@ -38,9 +38,9 @@ const Tabs = () => {
         tabBarInactiveTintColor: COLORS.primary,
         tabBarShowLabel: false,
         tabBarStyle: {
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
-          height: '10%',
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
+          height: '8%',
         },
       })}>
       <Tab.Screen
@@ -65,7 +65,21 @@ const Tabs = () => {
       <Tab.Screen
         name="Cart"
         component={CartScreens}
-        options={{headerShown: false}}
+        options={{
+          headerStyle: {
+            backgroundColor: 'white',
+            elevation: 0,
+          },
+          headerTintColor: 'black',
+          headerTitleStyle: {
+            color: 'black',
+          },
+          title: 'Keranjang Saya',
+          headerShown: true,
+          headerLeft: () => {
+            return <BtnBack styles={{marginLeft: 10}} />;
+          },
+        }}
       />
       <Tab.Screen
         name="Settings"
