@@ -10,6 +10,7 @@ import React, {useState} from 'react';
 import RemixIcon from 'react-native-remix-icon';
 import {ButtonPrimary} from '../components';
 import COLORS from '../constant/Colors';
+import {PaymentStyles} from '../styles/PaymentStyles';
 
 const ListBank = [
   {
@@ -42,7 +43,7 @@ const ListBank = [
 const MetodePembayaran = [
   {
     id: '1',
-    name: 'indomaret',
+    name: 'Indomaret',
     image: require('../assets/indomaret.png'),
   },
   {
@@ -53,7 +54,7 @@ const MetodePembayaran = [
   {
     id: '3',
     name: 'Gopay',
-    image: require('../assets/gopay 2.jpg'),
+    image: require('../assets/gopay.jpg'),
   },
   {
     id: '4',
@@ -64,32 +65,19 @@ const MetodePembayaran = [
 
 const Payment = props => {
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        borderBottomWidth: 1,
-        padding: 10,
-        borderColor: COLORS.grey,
-      }}>
-      <View style={{width: '95%', marginHorizontal: 10}}>
-        <Image
-          source={props.source}
-          style={{width: 25, height: 25, borderRadius: 25 / 2}}
-        />
+    <View style={PaymentStyles.ContainerPayment}>
+      <View style={PaymentStyles.ContainerPayment1}>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
+          <Image source={props.source} style={PaymentStyles.ImagePayment} />
           <Text style={{fontSize: 20, fontWeight: '400'}}>{props.title}</Text>
-          <TouchableOpacity onPress={props.onPress}>
-            <RemixIcon
-              name={props.icon}
-              color={props.color}
-              size={props.size}
-            />
-          </TouchableOpacity>
         </View>
+        <TouchableOpacity onPress={props.onPress}>
+          <RemixIcon name={props.icon} color={props.color} size={props.size} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -104,31 +92,7 @@ const PaymentScreens = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          backgroundColor: '#FAFAFA',
-          padding: 10,
-        }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <RemixIcon
-            name="ri-arrow-left-circle-line"
-            size={38}
-            color={COLORS.primary}
-          />
-        </TouchableOpacity>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: '700',
-            marginLeft: 20,
-            color: '#1d1d1d',
-          }}>
-          Metode Pembayaran
-        </Text>
-      </View>
+    <SafeAreaView style={PaymentStyles.Container}>
       <View style={{flex: 1}}>
         <Payment
           title="Transfer Bank"
@@ -145,35 +109,27 @@ const PaymentScreens = ({navigation}) => {
             />
             {ListBank.map(e => {
               return (
-                <View
-                  key={e.id}
-                  style={{
-                    borderBottomWidth: 1,
-                    borderColor: COLORS.grey,
-                    marginLeft: 50,
-                    paddingVertical: 5,
-                  }}>
-                  <Image
-                    source={e.image}
-                    style={{width: 25, height: 25, borderRadius: 25 / 2}}
-                  />
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                    }}>
-                    <Text>{e.bank}</Text>
-                    <TouchableOpacity onPress={() => setSelected(e.bank)}>
+                <View key={e.id} style={PaymentStyles.ContainerListBank}>
+                  <View style={PaymentStyles.ContainerListBank1}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}>
+                      <Image source={e.image} style={PaymentStyles.ImageBank} />
+                      <Text style={{fontSize: 14, fontWeight: '400'}}>
+                        {e.bank}
+                      </Text>
+                    </View>
+                    <TouchableOpacity onPress={() => setSelected(e.id)}>
                       <RemixIcon
-                        style={{marginRight: 20}}
                         name={
-                          selected === e.bank
+                          selected === e.id
                             ? 'ri-checkbox-circle-line'
                             : 'ri-checkbox-blank-circle-line'
                         }
-                        color={
-                          selected === e.bank ? COLORS.primary : COLORS.grey
-                        }
+                        color={selected === e.id ? COLORS.primary : COLORS.grey}
                       />
                     </TouchableOpacity>
                   </View>
@@ -186,42 +142,33 @@ const PaymentScreens = ({navigation}) => {
             title="Kartu Kredit / Debit nline"
             icon="ri-arrow-right-s-line"
             onPress={() => onClickOpen(true)}
+            source={require('../assets/bank-card-fill.png')}
           />
         )}
         {MetodePembayaran.map(i => {
           return (
-            <View
-              key={i.id}
-              style={{
-                flexDirection: 'row',
-                borderBottomWidth: 1,
-                padding: 10,
-                borderColor: COLORS.grey,
-              }}>
-              <View style={{width: '95%', marginHorizontal: 10}}>
-                <Image
-                  source={i.image}
-                  style={{width: 25, height: 25, borderRadius: 25 / 2}}
-                />
+            <View key={i.id} style={PaymentStyles.ContainerListMetode}>
+              <View style={PaymentStyles.ContainerListMetode1}>
                 <View
                   style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                   }}>
+                  <Image source={i.image} style={PaymentStyles.ImageMetode} />
                   <Text style={{fontSize: 20, fontWeight: '400'}}>
                     {i.name}
                   </Text>
-                  <TouchableOpacity onPress={() => setSelected(i.name)}>
-                    <RemixIcon
-                      name={
-                        selected === i.name
-                          ? 'ri-checkbox-circle-line'
-                          : 'ri-checkbox-blank-circle-line'
-                      }
-                      color={selected === i.name ? COLORS.primary : COLORS.grey}
-                    />
-                  </TouchableOpacity>
                 </View>
+                <TouchableOpacity onPress={() => setSelected(i.name)}>
+                  <RemixIcon
+                    name={
+                      selected === i.name
+                        ? 'ri-checkbox-circle-line'
+                        : 'ri-checkbox-blank-circle-line'
+                    }
+                    color={selected === i.name ? COLORS.primary : COLORS.grey}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
           );
@@ -239,5 +186,3 @@ const PaymentScreens = ({navigation}) => {
 };
 
 export default PaymentScreens;
-
-const styles = StyleSheet.create({});

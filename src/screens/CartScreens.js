@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import RemixIcon from 'react-native-remix-icon';
-import {FileExcel2Fill} from 'react-native-remix-icon/src/icons';
 import COLORS from '../constant/Colors';
+import {useNavigation} from '@react-navigation/native';
 
 const Data = [
   {
@@ -30,12 +30,41 @@ const Data = [
     Image: require('../assets/onboard1.jpg'),
     select: 'all',
   },
+  {
+    id: 3,
+    name: 'facial',
+    desc: 'facial face vit c serum + lightening',
+    var: '20 ml',
+    Price: 'Rp. 600.000',
+    Image: require('../assets/onboard1.jpg'),
+    select: 'all',
+  },
+  {
+    id: 4,
+    name: 'facial',
+    desc: 'facial face vit c serum + lightening',
+    var: '20 ml',
+    Price: 'Rp. 600.000',
+    Image: require('../assets/onboard1.jpg'),
+    select: 'all',
+  },
+  {
+    id: 5,
+    name: 'facial',
+    desc: 'facial face vit c serum + lightening',
+    var: '20 ml',
+    Price: 'Rp. 600.000',
+    Image: require('../assets/onboard1.jpg'),
+    select: 'all',
+  },
 ];
 
-const CartScreens = () => {
+const CartScreens = item => {
+  const navigation = useNavigation();
   const [status, setStatus] = useState();
+  const [selectAll, setSelectAll] = useState();
   return (
-    <View>
+    <View style={{height: '100%'}}>
       <View
         style={{
           borderBottomWidth: 1,
@@ -63,14 +92,11 @@ const CartScreens = () => {
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
               }}>
-              <TouchableOpacity
-                onPressIn={() => setStatus(item.name, item.all)}>
+              <TouchableOpacity onPressIn={() => setStatus(item.id)}>
                 <RemixIcon
                   name={
-                    status === item.name
+                    status === item.id
                       ? 'ri-checkbox-line'
-                      : status === item.all
-                      ? 'ri-checkbox-blank-line'
                       : 'ri-checkbox-blank-line'
                   }
                   color={COLORS.primary}
@@ -147,12 +173,94 @@ const CartScreens = () => {
             </View>
           </View>
         )}
-        ListFooterComponent={() => (
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Footer content</Text>
-          </View>
-        )}
       />
+      <View
+        style={{
+          backgroundColor: COLORS.white,
+        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: 20,
+            paddingVertical: 10,
+            borderBottomWidth: 1,
+            borderColor: COLORS.grey,
+          }}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity style={{marginRight: 5}}>
+              <RemixIcon name="ri-checkbox-blank-line" color={COLORS.grey} />
+            </TouchableOpacity>
+            <Text>Voucher</Text>
+          </View>
+          <TouchableOpacity
+            style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Text>Masukan Kode Voucher</Text>
+            <RemixIcon name="ri-arrow-right-s-line" />
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingLeft: 20,
+          }}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity
+              style={{marginRight: 5}}
+              onPress={() => setSelectAll(Data, item.select)}>
+              <RemixIcon
+                name={
+                  selectAll === item.select
+                    ? 'ri-checkbox-line'
+                    : 'ri-checkbox-blank-line'
+                }
+                color={COLORS.grey}
+              />
+            </TouchableOpacity>
+            <Text>Semua</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginTop: 10,
+            }}>
+            <View
+              style={{
+                alignItems: 'flex-end',
+                marginRight: 8,
+              }}>
+              <Text style={{color: COLORS.black, fontWeight: 'bold'}}>
+                Subtotal Rp. 1.444.000
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: COLORS.primary,
+                  fontWeight: 'bold',
+                }}>
+                Dapatkan Poin (150)
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={{
+                backgroundColor: COLORS.primary,
+                paddingVertical: 15,
+                paddingHorizontal: 20,
+              }}
+              onPress={() => navigation.navigate('ShoppingBagScreens')}>
+              <Text
+                style={{
+                  color: COLORS.white,
+                  fontWeight: 'bold',
+                }}>
+                Checkout (2)
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
     </View>
   );
 };

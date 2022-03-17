@@ -11,6 +11,7 @@ import {
 import React from 'react';
 import COLORS from '../constant/Colors';
 import {ButtonPrimary} from '../components';
+import {LoginStyles} from '../styles/LoginStyles';
 
 const Input = props => {
   return (
@@ -19,14 +20,7 @@ const Input = props => {
         {props.title}
       </Text>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <View
-          style={{
-            borderWidth: 2,
-            width: '95%',
-            marginHorizontal: 10,
-            borderRadius: 10,
-            borderColor: '#c7c7c7',
-          }}>
+        <View style={LoginStyles.Input}>
           <TextInput
             placeholder={props.placeholder}
             secureTextEntry={props.secureTextEntry}
@@ -42,23 +36,13 @@ const LoginScreens = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            paddingTop: 50,
-          }}>
+        <View style={LoginStyles.ContainerImageLogin}>
           <Image
             source={require('../assets/img.jpg')}
-            style={{width: 200, height: 200, borderRadius: 200 / 2}}
+            style={LoginStyles.ImageProfile}
           />
-          <Text style={[styles.textWelcome, {marginTop: 30}]}>
-            Selamat Datang!
-          </Text>
-          <Text style={[styles.textWelcome, {marginTop: 8}]}>
-            Harap isi data ingin dengan benar
-          </Text>
+          <Text style={{marginTop: 30}}>Selamat Datang!</Text>
+          <Text style={{marginTop: 8}}>Harap isi data ingin dengan benar</Text>
         </View>
         <View
           style={{
@@ -92,18 +76,15 @@ const LoginScreens = ({navigation}) => {
               alignItems: 'center',
               marginBottom: 30,
             }}>
-            <Text style={styles.textLogin}>Belum Memiliki Akun?</Text>
+            <Text>Belum Memiliki Akun?</Text>
             <TouchableOpacity
               onPress={() => navigation.navigate('RegisterScreens')}>
               <Text
-                style={[
-                  styles.textLogin,
-                  {
-                    color: '#4285F4',
-                    textDecorationLine: 'underline',
-                    marginLeft: 5,
-                  },
-                ]}>
+                style={{
+                  color: '#4285F4',
+                  textDecorationLine: 'underline',
+                  marginLeft: 5,
+                }}>
                 Daftar
               </Text>
             </TouchableOpacity>
@@ -115,5 +96,3 @@ const LoginScreens = ({navigation}) => {
 };
 
 export default LoginScreens;
-
-const styles = StyleSheet.create({});

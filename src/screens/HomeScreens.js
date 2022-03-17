@@ -62,7 +62,8 @@ const HomeScreens = ({navigation}) => {
                   justifyContent: 'center',
                   alignItems: 'center',
                   elevation: 10,
-                }}>
+                }}
+                onPress={() => navigation.navigate('NotificationScreens')}>
                 <RemixIcon
                   name="ri-notification-3-line"
                   size="28"
@@ -208,8 +209,12 @@ const HomeScreens = ({navigation}) => {
             flexDirection: 'row',
             alignSelf: 'center',
           }}>
-          {Skincare.map(item => {
-            return (
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={Skincare}
+            keyExtractor={item => item.id}
+            renderItem={({item}) => (
               <View
                 key={item.id}
                 style={{
@@ -217,7 +222,6 @@ const HomeScreens = ({navigation}) => {
                   margin: 5,
                   alignItems: 'center',
                   borderRadius: 20,
-                  height: '100%',
                   elevation: 5,
                 }}>
                 <View>
@@ -227,52 +231,51 @@ const HomeScreens = ({navigation}) => {
                       source={item.image}
                       style={{width: 165, height: 160, borderRadius: 20}}
                     />
-                  </TouchableOpacity>
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      marginLeft: 10,
-                      marginTop: 10,
-                      fontWeight: 'bold',
-                    }}>
-                    {item.name}
-                  </Text>
-                  <Text style={{fontSize: 14, marginLeft: 10}}>
-                    {item.desc}
-                  </Text>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      marginVertical: 10,
-                      alignItems: 'center',
-                    }}>
-                    <Text style={{fontSize: 18, marginLeft: 10}}>
-                      {item.price}
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        marginLeft: 10,
+                        marginTop: 10,
+                        fontWeight: 'bold',
+                      }}>
+                      {item.name}
+                    </Text>
+                    <Text style={{fontSize: 14, marginLeft: 10}}>
+                      {item.desc}
                     </Text>
                     <View
                       style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        marginVertical: 10,
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        marginRight: 15,
-                        width: 30,
-                        height: 30,
-                        borderRadius: 30 / 2,
-                        backgroundColor: COLORS.primary,
                       }}>
-                      <RemixIcon
-                        name="ri-shopping-bag-line"
-                        size="20"
-                        color="#fff"
-                      />
+                      <Text style={{fontSize: 18, marginLeft: 10}}>
+                        {item.price}
+                      </Text>
+                      <View
+                        style={{
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginRight: 15,
+                          width: 30,
+                          height: 30,
+                          borderRadius: 30 / 2,
+                          backgroundColor: COLORS.primary,
+                        }}>
+                        <RemixIcon
+                          name="ri-shopping-bag-line"
+                          size="20"
+                          color="#fff"
+                        />
+                      </View>
                     </View>
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </View>
-            );
-          })}
+            )}
+          />
         </View>
-
         {/* Flatlist 2 */}
 
         <View style={{marginHorizontal: 15}}>

@@ -7,7 +7,9 @@ import {useNavigation} from '@react-navigation/native';
 const BtnCart = props => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.goBack()} style={props.styles}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('CartScreens')}
+      style={props.styles}>
       <RemixIcon name="ri-shopping-cart-line" color={COLORS.black} size="30" />
     </TouchableOpacity>
   );

@@ -14,6 +14,9 @@ import {
   Component1,
   MessagesScreens,
   ChatScreens,
+  NotificationScreens,
+  OrderScreens,
+  CartScreens,
 } from './src/screens';
 import Tabs from './src/navigations/Tabs';
 import BtnBack from './src/components/BtnBack';
@@ -60,7 +63,11 @@ const App = ({navigation}) => {
           name="PaymentScreens"
           component={PaymentScreens}
           options={{
-            headerShown: false,
+            headerShown: true,
+            title: 'Payment Method',
+            headerLeft: () => {
+              return <BtnBack styles={{marginRight: 10}} />;
+            },
           }}
         />
         <Stack.Screen
@@ -94,7 +101,7 @@ const App = ({navigation}) => {
               return <BtnBackArrow />;
             },
             headerRight: () => {
-              return <BtnCart />;
+              return <BtnCart onPress={'CartScreens'} />;
             },
           }}
         />
@@ -129,6 +136,17 @@ const App = ({navigation}) => {
         />
         <Stack.Screen name="MessagesScreens" component={MessagesScreens} />
         <Stack.Screen
+          name="NotificationScreens"
+          component={NotificationScreens}
+          options={{
+            headerShown: true,
+            title: 'Notification',
+            headerLeft: () => {
+              return <BtnBack styles={{marginRight: 10}} />;
+            },
+          }}
+        />
+        <Stack.Screen
           name="ChatScreens"
           component={ChatScreens}
           options={({route}) => ({
@@ -141,6 +159,39 @@ const App = ({navigation}) => {
               return <BtnRightChat />;
             },
           })}
+        />
+        <Stack.Screen
+          name="OrderScreens"
+          component={OrderScreens}
+          options={({route}) => ({
+            headerStyle: {
+              backgroundColor: 'white',
+              elevation: 0,
+            },
+            title: 'Pesanan Saya',
+            headerLeft: () => {
+              return <BtnBack styles={{marginRight: 10}} />;
+            },
+          })}
+        />
+        <Stack.Screen
+          name="CartScreens"
+          component={CartScreens}
+          options={{
+            headerStyle: {
+              backgroundColor: 'white',
+              elevation: 0,
+            },
+            headerTintColor: 'black',
+            headerTitleStyle: {
+              color: 'black',
+            },
+            title: 'Keranjang Saya',
+            headerShown: true,
+            headerLeft: () => {
+              return <BtnBack styles={{marginRight: 10}} />;
+            },
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

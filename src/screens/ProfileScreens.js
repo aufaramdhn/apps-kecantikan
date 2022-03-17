@@ -62,16 +62,16 @@ const ProfileScreens = ({navigation}) => {
               </View>
             </View>
           </View>
-          <View
+          <TouchableOpacity
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              borderBottomWidth: 1,
               paddingVertical: 10,
               marginHorizontal: 20,
               alignItems: 'center',
               marginTop: 10,
-            }}>
+            }}
+            onPress={() => navigation.navigate('OrderScreens')}>
             <View
               style={{
                 flexDirection: 'row',
@@ -96,7 +96,8 @@ const ProfileScreens = ({navigation}) => {
               <Text style={{fontSize: 14}}>lihat Riwayat Pesanan</Text>
               <RemixIcon name="ri-arrow-right-s-line" size="28" />
             </View>
-          </View>
+          </TouchableOpacity>
+          <View style={{borderBottomWidth: 1, marginHorizontal: 20}} />
           <View
             style={{
               flexDirection: 'row',
@@ -137,6 +138,7 @@ const ProfileScreens = ({navigation}) => {
             </View>
           </View>
         </View>
+
         <View
           style={{
             flex: 1,

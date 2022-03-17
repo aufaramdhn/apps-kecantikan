@@ -12,6 +12,8 @@ import NewScreens from './NewScreens';
 import ShoppingBagScreens from './ShoppingBagScreens';
 import MessagesScreens from './MessagesScreens';
 import Component1 from './Component1';
+import NotificationScreens from './NotificationScreens';
+import OrderScreens from './OrderScreens';
 
 export {
   OnBoardScreens,
@@ -28,4 +30,6 @@ export {
   ShoppingBagScreens,
   MessagesScreens,
   Component1,
+  NotificationScreens,
+  OrderScreens,
 };
