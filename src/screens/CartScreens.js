@@ -10,6 +10,7 @@ import React, {useState} from 'react';
 import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
 import {useNavigation} from '@react-navigation/native';
+import {CartStyles} from '../styles/CartStyles';
 
 const Data = [
   {
@@ -65,27 +66,14 @@ const CartScreens = item => {
   const [selectAll, setSelectAll] = useState();
   return (
     <View style={{height: '100%'}}>
-      <View
-        style={{
-          borderBottomWidth: 1,
-          borderColor: COLORS.grey,
-          paddingVertical: 10,
-          paddingHorizontal: 20,
-          backgroundColor: COLORS.lightgrey,
-        }}>
+      <View style={CartStyles.ContainerHeader}>
         <Text style={{fontSize: 16, color: COLORS.black}}>Produk Pilihan</Text>
       </View>
       <FlatList
         data={Data}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <View
-            style={{
-              flex: 1,
-              paddingVertical: 10,
-              borderBottomWidth: 1,
-              borderColor: COLORS.grey,
-            }}>
+          <View style={CartStyles.ContainerCart}>
             <View
               style={{
                 flexDirection: 'row',
@@ -145,24 +133,8 @@ const CartScreens = item => {
                 </View>
               </View>
             </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'flex-end',
-                marginHorizontal: 20,
-                marginTop: 10,
-              }}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  borderColor: COLORS.primary,
-                  borderWidth: 1,
-                  borderRadius: 25,
-                  justifyContent: 'space-between',
-                  width: '25%',
-                }}>
+            <View style={CartStyles.ContainerBtnAddSub}>
+              <View style={CartStyles.BtnAddSub}>
                 <RemixIcon
                   name="ri-indeterminate-circle-line"
                   color={COLORS.primary}
@@ -178,15 +150,7 @@ const CartScreens = item => {
         style={{
           backgroundColor: COLORS.white,
         }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            paddingVertical: 10,
-            borderBottomWidth: 1,
-            borderColor: COLORS.grey,
-          }}>
+        <View style={CartStyles.ContainerFooter}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity style={{marginRight: 5}}>
               <RemixIcon name="ri-checkbox-blank-line" color={COLORS.grey} />

@@ -127,7 +127,7 @@ const OrderScreens = ({navigation}) => {
           {Header.map(e => {
             return (
               <TouchableOpacity
-                key={e.toString()}
+                key={e}
                 onPress={() => setStatusFilter(e.status)}
                 style={{marginHorizontal: 10}}>
                 <Text
@@ -144,7 +144,7 @@ const OrderScreens = ({navigation}) => {
       </View>
       <FlatList
         data={dataList}
-        keyExtractor={(e, item) => item.id}
+        keyExtractor={item => item.id}
         renderItem={({item}) => (
           <View
             style={{
