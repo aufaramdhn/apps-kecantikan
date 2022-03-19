@@ -21,6 +21,7 @@ const Data = [
     Price: 'Rp. 600.000',
     Image: require('../assets/onboard1.jpg'),
     select: 'all',
+    selected: false,
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const Data = [
     Price: 'Rp. 600.000',
     Image: require('../assets/onboard1.jpg'),
     select: 'all',
+    selected: false,
   },
   {
     id: 3,
@@ -39,6 +41,7 @@ const Data = [
     Price: 'Rp. 600.000',
     Image: require('../assets/onboard1.jpg'),
     select: 'all',
+    selected: false,
   },
   {
     id: 4,
@@ -48,6 +51,7 @@ const Data = [
     Price: 'Rp. 600.000',
     Image: require('../assets/onboard1.jpg'),
     select: 'all',
+    selected: false,
   },
   {
     id: 5,
@@ -57,6 +61,7 @@ const Data = [
     Price: 'Rp. 600.000',
     Image: require('../assets/onboard1.jpg'),
     select: 'all',
+    selected: false,
   },
 ];
 
@@ -64,6 +69,7 @@ const CartScreens = item => {
   const navigation = useNavigation();
   const [status, setStatus] = useState();
   const [selectAll, setSelectAll] = useState();
+  const [selectedItem, setSelectItem] = useState(false);
   return (
     <View style={{height: '100%'}}>
       <View style={CartStyles.ContainerHeader}>
@@ -80,10 +86,16 @@ const CartScreens = item => {
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
               }}>
-              <TouchableOpacity onPressIn={() => setStatus(item.id)}>
+              <TouchableOpacity
+                onPress={() => {
+                  setStatus(item.id);
+                  setSelectItem(item.selected);
+                  setSelectItem(!selectedItem);
+                  console.log(selectedItem);
+                }}>
                 <RemixIcon
                   name={
-                    status === item.id
+                    status === item.id && selectedItem === true
                       ? 'ri-checkbox-line'
                       : 'ri-checkbox-blank-line'
                   }

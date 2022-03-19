@@ -8,10 +8,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React from 'react';
-import COLORS from '../constant/Colors';
+import React, {useState} from 'react';
 import {ButtonPrimary} from '../components';
 import {LoginStyles} from '../styles/LoginStyles';
+import axios from 'axios';
 
 const Input = props => {
   return (
@@ -25,6 +25,8 @@ const Input = props => {
             placeholder={props.placeholder}
             secureTextEntry={props.secureTextEntry}
             style={props.style}
+            onChangeText={props.onChangeText}
+            value={props.value}
           />
         </View>
       </View>
@@ -33,6 +35,28 @@ const Input = props => {
 };
 
 const LoginScreens = ({navigation}) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onHandle = async () => {
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    console.log(formData);
+    await axios
+      .post('https://api-dev.betterjob.id/api/login', formData, {
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -50,9 +74,18 @@ const LoginScreens = ({navigation}) => {
             paddingTop: 30,
             padding: 20,
           }}>
-          <Input title="Username" />
+          <Input
+            title="Username"
+            value={username}
+            onChangeText={value => setUsername(value)}
+          />
           <Input title="Email" />
-          <Input title="Password" secureTextEntry={true} />
+          <Input
+            title="Password"
+            value={password}
+            secureTextEntry={true}
+            onChangeText={value => setPassword(value)}
+          />
           <Text
             style={{
               textDecorationLine: 'underline',

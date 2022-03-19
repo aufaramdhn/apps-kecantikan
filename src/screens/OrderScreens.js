@@ -127,7 +127,7 @@ const OrderScreens = ({navigation}) => {
           {Header.map(e => {
             return (
               <TouchableOpacity
-                key={e}
+                key={e.status}
                 onPress={() => setStatusFilter(e.status)}
                 style={{marginHorizontal: 10}}>
                 <Text

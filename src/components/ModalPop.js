@@ -81,7 +81,7 @@ const ModalPop = () => {
               </View>
               {Ekspedisi.map(e => {
                 return (
-                  <View
+                  <TouchableOpacity
                     key={e.id}
                     style={{
                       flexDirection: 'row',
@@ -90,7 +90,8 @@ const ModalPop = () => {
                       borderBottomWidth: 1,
                       borderColor: COLORS.grey,
                       paddingVertical: 5,
-                    }}>
+                    }}
+                    onPress={() => setSelected(e.id)}>
                     <View style={{paddingRight: 90}}>
                       <View style={{flexDirection: 'row'}}>
                         <Text
@@ -115,13 +116,11 @@ const ModalPop = () => {
                         {e.est}
                       </Text>
                     </View>
-                    <TouchableOpacity onPress={() => setSelected(e.id)}>
-                      <RemixIcon
-                        name="ri-check-fill"
-                        color={selected === e.id ? COLORS.succes : COLORS.grey}
-                      />
-                    </TouchableOpacity>
-                  </View>
+                    <RemixIcon
+                      name="ri-check-fill"
+                      color={selected === e.id ? COLORS.succes : COLORS.grey}
+                    />
+                  </TouchableOpacity>
                 );
               })}
             </View>
