@@ -134,8 +134,6 @@ const ShoppingBagScreens = ({navigation}) => {
             onPress={() => navigation.navigate('PaymentScreens')}
             style={{
               flexDirection: 'row',
-              borderBottomWidth: 1,
-              borderColor: COLORS.grey,
               paddingBottom: 5,
               marginTop: 10,
             }}>
@@ -158,7 +156,9 @@ const ShoppingBagScreens = ({navigation}) => {
               <RemixIcon name="ri-arrow-right-s-line" />
             </View>
           </TouchableOpacity>
+          <View style={{borderBottomWidth: 1, borderColor: COLORS.grey}} />
           <ModalPop />
+          <View style={{borderBottomWidth: 1, borderColor: COLORS.grey}} />
           <View
             style={{
               flexDirection: 'row',

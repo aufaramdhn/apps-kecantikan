@@ -19,7 +19,7 @@ const Data = [
     desc: 'facial face vit c serum + lightening',
     var: '20 ml',
     Price: 'Rp. 600.000',
-    Image: require('../assets/onboard1.jpg'),
+    Image: require('../assets/image2.jpg'),
     select: 'all',
     selected: false,
   },
@@ -29,7 +29,7 @@ const Data = [
     desc: 'facial face vit c serum + lightening',
     var: '20 ml',
     Price: 'Rp. 600.000',
-    Image: require('../assets/onboard1.jpg'),
+    Image: require('../assets/image3.jpg'),
     select: 'all',
     selected: false,
   },
@@ -39,7 +39,7 @@ const Data = [
     desc: 'facial face vit c serum + lightening',
     var: '20 ml',
     Price: 'Rp. 600.000',
-    Image: require('../assets/onboard1.jpg'),
+    Image: require('../assets/image2.jpg'),
     select: 'all',
     selected: false,
   },
@@ -49,7 +49,7 @@ const Data = [
     desc: 'facial face vit c serum + lightening',
     var: '20 ml',
     Price: 'Rp. 600.000',
-    Image: require('../assets/onboard1.jpg'),
+    Image: require('../assets/image3.jpg'),
     select: 'all',
     selected: false,
   },
@@ -59,7 +59,7 @@ const Data = [
     desc: 'facial face vit c serum + lightening',
     var: '20 ml',
     Price: 'Rp. 600.000',
-    Image: require('../assets/onboard1.jpg'),
+    Image: require('../assets/image2.jpg'),
     select: 'all',
     selected: false,
   },
@@ -70,6 +70,7 @@ const CartScreens = item => {
   const [status, setStatus] = useState();
   const [selectAll, setSelectAll] = useState();
   const [selectedItem, setSelectItem] = useState(false);
+
   return (
     <View style={{height: '100%'}}>
       <View style={CartStyles.ContainerHeader}>

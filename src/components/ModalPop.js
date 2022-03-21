@@ -65,9 +65,9 @@ const ModalPop = () => {
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'space-between',
-                  alignItems: 'center',
                   borderBottomWidth: 1,
                   borderColor: COLORS.grey,
+                  alignItems: 'center',
                   paddingBottom: 5,
                 }}>
                 <Text
@@ -81,46 +81,48 @@ const ModalPop = () => {
               </View>
               {Ekspedisi.map(e => {
                 return (
-                  <TouchableOpacity
-                    key={e.id}
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      borderBottomWidth: 1,
-                      borderColor: COLORS.grey,
-                      paddingVertical: 5,
-                    }}
-                    onPress={() => setSelected(e.id)}>
-                    <View style={{paddingRight: 90}}>
-                      <View style={{flexDirection: 'row'}}>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            color: '#1d1d1d',
-                            fontWeight: 'bold',
-                          }}>
-                          {e.ekspedisi}
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            color: '#F1D00A',
-                            fontWeight: 'bold',
-                            marginLeft: 4,
-                          }}>
-                          {e.price}
+                  <View key={e.id}>
+                    <TouchableOpacity
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        paddingVertical: 5,
+                      }}
+                      onPress={() => setSelected(e.id)}>
+                      <View style={{paddingRight: 90}}>
+                        <View style={{flexDirection: 'row'}}>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                              color: '#1d1d1d',
+                              fontWeight: 'bold',
+                            }}>
+                            {e.ekspedisi}
+                          </Text>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                              color: '#F1D00A',
+                              fontWeight: 'bold',
+                              marginLeft: 4,
+                            }}>
+                            {e.price}
+                          </Text>
+                        </View>
+                        <Text style={{fontSize: 16, color: '#1d1d1d'}}>
+                          {e.est}
                         </Text>
                       </View>
-                      <Text style={{fontSize: 16, color: '#1d1d1d'}}>
-                        {e.est}
-                      </Text>
-                    </View>
-                    <RemixIcon
-                      name="ri-check-fill"
-                      color={selected === e.id ? COLORS.succes : COLORS.grey}
+                      <RemixIcon
+                        name="ri-check-fill"
+                        color={selected === e.id ? COLORS.succes : COLORS.grey}
+                      />
+                    </TouchableOpacity>
+                    <View
+                      style={{borderBottomWidth: 1, borderColor: COLORS.grey}}
                     />
-                  </TouchableOpacity>
+                  </View>
                 );
               })}
             </View>
@@ -131,8 +133,6 @@ const ModalPop = () => {
         onPress={() => setModalVisible(true)}
         style={{
           flexDirection: 'row',
-          borderBottomWidth: 1,
-          borderColor: COLORS.grey,
           paddingBottom: 5,
           marginTop: 10,
         }}>

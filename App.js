@@ -17,6 +17,7 @@ import {
   NotificationScreens,
   OrderScreens,
   CartScreens,
+  TrackScreens,
 } from './src/screens';
 import Tabs from './src/navigations/Tabs';
 import BtnBack from './src/components/BtnBack';
@@ -24,6 +25,7 @@ import BtnRightEditProfile from './src/components/BtnRightEditProfile';
 import BtnRightChat from './src/components/BtnRightChat';
 import BtnBackArrow from './src/components/BtnBackArrow';
 import BtnCart from './src/components/BtnCart';
+import BtnRightTrack from './src/components/BtnRightTrack';
 
 const Stack = createNativeStackNavigator();
 
@@ -186,12 +188,29 @@ const App = ({navigation}) => {
             headerTitleStyle: {
               color: 'black',
             },
-            title: 'Keranjang Saya',
+            title: 'Dikirim',
             headerShown: true,
             headerLeft: () => {
               return <BtnBack styles={{marginRight: 10}} />;
             },
           }}
+        />
+        <Stack.Screen
+          name="TrackScreens"
+          component={TrackScreens}
+          options={({route}) => ({
+            headerStyle: {
+              backgroundColor: 'white',
+              elevation: 0,
+            },
+            title: route.params.status,
+            headerLeft: () => {
+              return <BtnBack styles={{marginRight: 10}} />;
+            },
+            headerRight: () => {
+              return <BtnRightTrack />;
+            },
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>

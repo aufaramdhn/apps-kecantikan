@@ -67,15 +67,20 @@ const Payment = props => {
   return (
     <View style={PaymentStyles.ContainerPayment}>
       <View style={PaymentStyles.ContainerPayment1}>
-        <View
+        <TouchableOpacity
+          onPress={props.onPress}
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
+            width: '100%',
           }}>
-          <Image source={props.source} style={PaymentStyles.ImagePayment} />
-          <Text style={{fontSize: 20, fontWeight: '400'}}>{props.title}</Text>
-        </View>
-        <TouchableOpacity onPress={props.onPress}>
+          <View
+            style={{
+              flexDirection: 'row',
+            }}>
+            <Image source={props.source} style={PaymentStyles.ImagePayment} />
+            <Text style={{fontSize: 20, fontWeight: '400'}}>{props.title}</Text>
+          </View>
           <RemixIcon name={props.icon} color={props.color} size={props.size} />
         </TouchableOpacity>
       </View>

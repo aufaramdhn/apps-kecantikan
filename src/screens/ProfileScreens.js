@@ -107,31 +107,33 @@ const ProfileScreens = ({navigation}) => {
               marginHorizontal: 20,
             }}>
             <View style={{alignItems: 'center'}}>
-              <RemixIcon
-                name="ri-wallet-fill"
-                size="34"
-                color={COLORS.primary}
+              <Image
+                source={require('../assets/disc3.png')}
+                style={{width: 50, height: 50, borderRadius: 50 / 2}}
               />
-              <Text style={{fontSize: 14, fontWeight: '400'}}>Belum Bayar</Text>
+              <Text style={{fontSize: 14, fontWeight: '400'}}>
+                Gratis Ongkir
+              </Text>
             </View>
             <View style={{alignItems: 'center'}}>
-              <RemixIcon
-                name="ri-truck-line"
-                size="34"
-                color={COLORS.primary}
+              <Image
+                source={require('../assets/disc2.jpg')}
+                style={{width: 50, height: 50, borderRadius: 50 / 2}}
               />
               <Text style={{fontSize: 14, fontWeight: '400'}}>Dikemas</Text>
             </View>
             <View style={{alignItems: 'center'}}>
-              <RemixIcon
-                name="ri-archive-line"
-                size="34"
-                color={COLORS.primary}
+              <Image
+                source={require('../assets/disc1.jpeg')}
+                style={{width: 50, height: 50, borderRadius: 50 / 2}}
               />
               <Text style={{fontSize: 14, fontWeight: '400'}}>Dikirim</Text>
             </View>
             <View style={{alignItems: 'center'}}>
-              <RemixIcon name="ri-star-fill" size="34" color={COLORS.primary} />
+              <Image
+                source={require('../assets/more-fill.png')}
+                style={{width: 50, height: 50, borderRadius: 50 / 2}}
+              />
               <Text style={{fontSize: 14, fontWeight: '400'}}>
                 Beri penilaian
               </Text>

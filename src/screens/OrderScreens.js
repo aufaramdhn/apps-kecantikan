@@ -41,8 +41,10 @@ const Data = [
     price: 'Rp. 400.000',
     qty: '1',
     dateTime: 'Konfirmasi Pesanan Produk Sebelum 13-03-2022',
+    dateKirim: 'Estimasi di terima sebelum Minggu,20 Mar 2022',
+    ekspedisi: 'J&T Ekspress',
     status: 'Belum Dibayar',
-    image: require('../assets/onboard1.jpg'),
+    image: require('../assets/image3.jpg'),
   },
   {
     id: 2,
@@ -52,8 +54,10 @@ const Data = [
     price: 'Rp. 400.000',
     qty: '1',
     dateTime: 'Konfirmasi Pesanan Produk Sebelum 13-03-2022',
+    dateKirim: 'Estimasi di terima sebelum Minggu,20 Mar 2022',
+    ekspedisi: 'J&T Ekspress',
     status: 'Dikemas',
-    image: require('../assets/onboard1.jpg'),
+    image: require('../assets/image3.jpg'),
   },
   {
     id: 3,
@@ -63,8 +67,10 @@ const Data = [
     price: 'Rp. 400.000',
     qty: '1',
     dateTime: 'Konfirmasi Pesanan Produk Sebelum 13-03-2022',
+    dateKirim: 'Estimasi di terima sebelum Minggu,20 Mar 2022',
+    ekspedisi: 'J&T Ekspress',
     status: 'Dikirim',
-    image: require('../assets/onboard1.jpg'),
+    image: require('../assets/image3.jpg'),
   },
   {
     id: 4,
@@ -74,8 +80,10 @@ const Data = [
     price: 'Rp. 400.000',
     qty: '1',
     dateTime: 'Konfirmasi Pesanan Produk Sebelum 13-03-2022',
+    dateKirim: 'Estimasi di terima sebelum Minggu,20 Mar 2022',
+    ekspedisi: 'J&T Ekspress',
     status: 'Selesai',
-    image: require('../assets/onboard1.jpg'),
+    image: require('../assets/image3.jpg'),
   },
   {
     id: 5,
@@ -85,8 +93,10 @@ const Data = [
     price: 'Rp. 400.000',
     qty: '1',
     dateTime: 'Konfirmasi Pesanan Produk Sebelum 13-03-2022',
+    dateKirim: 'Estimasi di terima sebelum Minggu,20 Mar 2022',
+    ekspedisi: 'J&T Ekspress',
     status: 'Dibatalkan',
-    image: require('../assets/onboard1.jpg'),
+    image: require('../assets/image3.jpg'),
   },
   {
     id: 6,
@@ -96,8 +106,10 @@ const Data = [
     price: 'Rp. 400.000',
     qty: '1',
     dateTime: 'Konfirmasi Pesanan Produk Sebelum 13-03-2022',
+    dateKirim: 'Estimasi di terima sebelum Minggu,20 Mar 2022',
+    ekspedisi: 'J&T Ekspress',
     status: 'Pengembalian',
-    image: require('../assets/onboard1.jpg'),
+    image: require('../assets/image3.jpg'),
   },
 ];
 
@@ -204,15 +216,14 @@ const OrderScreens = ({navigation}) => {
               <Text>{item.qty} Produk</Text>
               <Text>Subtotal Produk : {item.price}</Text>
             </View>
-            <View
+            <TouchableOpacity
               style={{
-                borderBottomWidth: 1,
-                borderColor: COLORS.grey,
                 paddingVertical: 5,
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 paddingHorizontal: 20,
-              }}>
+              }}
+              onPress={() => navigation.navigate('TrackScreens', {data: item})}>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <RemixIcon name="ri-truck-fill" color={COLORS.primary} />
                 <Text style={{color: COLORS.primary, marginLeft: 5}}>
@@ -220,7 +231,8 @@ const OrderScreens = ({navigation}) => {
                 </Text>
               </View>
               <RemixIcon name="ri-arrow-right-s-line" />
-            </View>
+            </TouchableOpacity>
+            <View style={{borderBottomWidth: 1, borderColor: COLORS.grey}} />
             <View
               style={{
                 flexDirection: 'row',
