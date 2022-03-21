@@ -203,7 +203,7 @@ const App = ({navigation}) => {
               backgroundColor: 'white',
               elevation: 0,
             },
-            title: route.params.status,
+            title: route.params.data.status,
             headerLeft: () => {
               return <BtnBack styles={{marginRight: 10}} />;
             },
