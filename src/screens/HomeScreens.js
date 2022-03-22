@@ -9,14 +9,22 @@ import {
   FlatList,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
 import Swiper from 'react-native-swiper';
 import Face from '../constant/DataFace';
 import Skincare from '../constant/DataSkincare';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreens = ({navigation}) => {
+  async function fetchData() {
+    const Token = await AsyncStorage.getItem('token');
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <SafeAreaView style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>

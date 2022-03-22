@@ -18,6 +18,7 @@ export const LoginStyles = StyleSheet.create({
     width: '95%',
     marginHorizontal: 10,
     borderRadius: 10,
-    borderColor: '#c7c7c7',
+    borderColor: COLORS.black,
+    paddingHorizontal: 5,
   },
 });
