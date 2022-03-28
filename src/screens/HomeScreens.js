@@ -16,6 +16,7 @@ import Swiper from 'react-native-swiper';
 import Face from '../constant/DataFace';
 import Skincare from '../constant/DataSkincare';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HeaderHome from '../components/moleculs/HeaderHome';
 
 const HomeScreens = ({navigation}) => {
   async function fetchData() {
@@ -29,100 +30,7 @@ const HomeScreens = ({navigation}) => {
     <SafeAreaView style={{flex: 1, paddingHorizontal: 10}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 30,
-            paddingHorizontal: 20,
-          }}>
-          <View>
-            <Image
-              source={require('../assets/img.jpg')}
-              style={{width: 60, height: 60, borderRadius: 25}}
-            />
-          </View>
-          <View style={{width: '85%'}}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
-              <View style={{marginHorizontal: 10}}>
-                <Text
-                  style={{fontSize: 20, fontWeight: '400', color: '#1d1d1d'}}>
-                  Your Name
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 14,
-                    fontWeight: '400',
-                    fontStyle: 'italic',
-                  }}>
-                  Designer
-                </Text>
-              </View>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#fff',
-                  height: 40,
-                  width: 40,
-                  borderRadius: 40 / 2,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  elevation: 10,
-                }}
-                onPress={() => navigation.navigate('NotificationScreens')}>
-                <RemixIcon
-                  name="ri-notification-3-line"
-                  size="28"
-                  color="#1d1d1d"
-                />
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginTop: 10,
-              }}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  borderWidth: 1,
-                  borderRadius: 30,
-                  paddingHorizontal: 10,
-                  height: 40,
-                  backgroundColor: 'white',
-                }}>
-                <RemixIcon name="ri-search-line" />
-                <TextInput
-                  placeholder="Search"
-                  style={{
-                    width: '70%',
-                  }}
-                />
-              </View>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#fff',
-                  height: 40,
-                  width: 40,
-                  borderRadius: 40 / 2,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  elevation: 10,
-                }}>
-                <RemixIcon
-                  name="ri-filter-off-line"
-                  size="28"
-                  color="#1d1d1d"
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
+        <HeaderHome />
         {/* Hero Section */}
         <View style={{flex: 1, marginTop: 30}}>
           <Swiper

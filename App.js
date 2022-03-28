@@ -32,8 +32,8 @@ const Stack = createNativeStackNavigator();
 const App = ({navigation}) => {
   return (
     <NavigationContainer>
-      <Stack.Navigator intialRouteName={'Home'}>
-        <Stack.Screen
+      <Stack.Navigator intialRouteName={'HomeScreens'}>
+        {/* <Stack.Screen
           name="OnBoardScreens"
           component={OnBoardScreens}
           options={{
@@ -53,7 +53,7 @@ const App = ({navigation}) => {
           options={{
             headerShown: false,
           }}
-        />
+        /> */}
         <Stack.Screen
           name="HomeScreens"
           component={Tabs}
@@ -61,7 +61,7 @@ const App = ({navigation}) => {
             headerShown: false,
           }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="PaymentScreens"
           component={PaymentScreens}
           options={{
@@ -211,7 +211,7 @@ const App = ({navigation}) => {
               return <BtnRightTrack />;
             },
           })}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
