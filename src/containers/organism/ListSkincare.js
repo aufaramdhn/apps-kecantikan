@@ -10,8 +10,10 @@ import React from 'react';
 import Skincare from '../../constant/DataSkincare';
 import COLORS from '../../constant/Colors';
 import RemixIcon from 'react-native-remix-icon';
+import {useNavigation} from '@react-navigation/native';
 
 const ListSkincare = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{

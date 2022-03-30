@@ -13,32 +13,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import ModalPopUp from '../components/atoms/ModalPopUp';
 import {Picker} from '@react-native-picker/picker';
 import RemixIcon from 'react-native-remix-icon';
-
-const Input = props => {
-  return (
-    <View style={{marginVertical: 10}}>
-      <Text style={{marginBottom: 10, marginHorizontal: 10, color: 'black'}}>
-        {props.title}
-      </Text>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <View
-          style={{
-            borderWidth: 2,
-            width: '95%',
-            marginHorizontal: 10,
-            borderRadius: 10,
-            borderColor: '#c7c7c7',
-          }}>
-          <TextInput
-            placeholder={props.placeholder}
-            secureTextEntry={props.secureTextEntry}
-            style={props.style}
-          />
-        </View>
-      </View>
-    </View>
-  );
-};
+import TxtInputAtoms from '../components/atoms/TxtInputAtoms';
 
 const RegisterScreens = ({navigation}) => {
   const [selectedProvinsi, setSelectedProvinsi] = useState();
@@ -101,7 +76,7 @@ const RegisterScreens = ({navigation}) => {
               />
             </View>
           </View>
-          <Input title="Email" placeholder="Your Email" />
+          <TxtInputAtoms title="Email" placeholder="Your Email" />
           <View style={{marginVertical: 10}}>
             <Text
               style={{marginBottom: 10, marginHorizontal: 10, color: 'black'}}>
@@ -192,7 +167,7 @@ const RegisterScreens = ({navigation}) => {
               </Picker>
             </View>
           </View>
-          <Input title="Alamat" style={{height: 90, text}} />
+          <TxtInputAtoms title="Alamat" style={{height: 90}} />
           <View style={{marginHorizontal: 10, marginVertical: 10}}>
             <Text>Password</Text>
             <View

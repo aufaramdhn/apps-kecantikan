@@ -1,7 +1,9 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import COLORS from '../../constant/Colors';
 import RemixIcon from 'react-native-remix-icon';
+import {useNavigation} from '@react-navigation/native';
+import {CartStyles} from '../../styles/CartStyles';
 
 const FooterCart = () => {
   const navigation = useNavigation();
@@ -32,15 +34,8 @@ const FooterCart = () => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <TouchableOpacity
             style={{marginRight: 5}}
-            onPress={() => setSelectAll(Data, item.select)}>
-            <RemixIcon
-              name={
-                selectAll === item.select
-                  ? 'ri-checkbox-line'
-                  : 'ri-checkbox-blank-line'
-              }
-              color={COLORS.grey}
-            />
+            onPress={() => navigation.navigate()}>
+            <RemixIcon name="ri-checkbox-blank-line" color={COLORS.grey} />
           </TouchableOpacity>
           <Text>Semua</Text>
         </View>

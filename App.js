@@ -18,6 +18,7 @@ import {
   OrderScreens,
   CartScreens,
   TrackScreens,
+  VoucherScreens,
 } from './src/screens';
 import Tabs from './src/navigations/Tabs';
 import BtnBack from './src/components/atoms/BtnBack';
@@ -32,7 +33,7 @@ const Stack = createNativeStackNavigator();
 const App = ({navigation}) => {
   return (
     <NavigationContainer>
-      <Stack.Navigator intialRouteName={'OnBoardScreens'}>
+      <Stack.Navigator intialRouteName={'CartScreens'}>
         <Stack.Screen
           name="OnBoardScreens"
           component={OnBoardScreens}
@@ -198,6 +199,23 @@ const App = ({navigation}) => {
         <Stack.Screen
           name="TrackScreens"
           component={TrackScreens}
+          options={({route}) => ({
+            headerStyle: {
+              backgroundColor: 'white',
+              elevation: 0,
+            },
+            title: route.params.data.status,
+            headerLeft: () => {
+              return <BtnBack styles={{marginRight: 10}} />;
+            },
+            headerRight: () => {
+              return <BtnRightTrack />;
+            },
+          })}
+        />
+        <Stack.Screen
+          name="VoucherScreens"
+          component={VoucherScreens}
           options={({route}) => ({
             headerStyle: {
               backgroundColor: 'white',
