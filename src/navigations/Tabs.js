@@ -8,7 +8,7 @@ import {
 } from '../screens';
 import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
-import BtnBack from '../components/BtnBack';
+import BtnBack from '../components/atoms/BtnBack';
 
 const Tab = createBottomTabNavigator();
 

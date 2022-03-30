@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import RemixIcon from 'react-native-remix-icon';
 import {ButtonPrimary} from '.';
-import COLORS from '../constant/Colors';
+import COLORS from '../../constant/Colors';
 
 const Ekspedisi = [
   {

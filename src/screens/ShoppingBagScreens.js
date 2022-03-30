@@ -10,10 +10,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import RemixIcon from 'react-native-remix-icon';
-import {ButtonPrimary} from '../components';
+import ButtonPrimary from '../components/atoms/ButtonPrimary';
 import COLORS from '../constant/Colors';
 import ShoppingBag from '../constant/ShoppingBag';
-import ModalPop from '../components/ModalPop';
+import ModalPop from '../components/atoms/ModalPop';
 
 const ShoppingBagScreens = ({navigation}) => {
   return (

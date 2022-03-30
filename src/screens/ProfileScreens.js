@@ -11,6 +11,8 @@ import React from 'react';
 import RemixIcon from 'react-native-remix-icon';
 import Transaksi from '../constant/Transaksi';
 import COLORS from '../constant/Colors';
+import ListTransaksi from '../containers/organism/ListTransaksi';
+import ListEvent from '../containers/organism/Event.organism';
 
 const ProfileScreens = ({navigation}) => {
   return (
@@ -98,124 +100,9 @@ const ProfileScreens = ({navigation}) => {
             </View>
           </TouchableOpacity>
           <View style={{borderBottomWidth: 1, marginHorizontal: 20}} />
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginVertical: 30,
-              marginHorizontal: 20,
-            }}>
-            <View style={{alignItems: 'center'}}>
-              <Image
-                source={require('../assets/disc3.png')}
-                style={{width: 50, height: 50, borderRadius: 50 / 2}}
-              />
-              <Text style={{fontSize: 14, fontWeight: '400'}}>
-                Gratis Ongkir
-              </Text>
-            </View>
-            <View style={{alignItems: 'center'}}>
-              <Image
-                source={require('../assets/disc2.jpg')}
-                style={{width: 50, height: 50, borderRadius: 50 / 2}}
-              />
-              <Text style={{fontSize: 14, fontWeight: '400'}}>Dikemas</Text>
-            </View>
-            <View style={{alignItems: 'center'}}>
-              <Image
-                source={require('../assets/disc1.jpeg')}
-                style={{width: 50, height: 50, borderRadius: 50 / 2}}
-              />
-              <Text style={{fontSize: 14, fontWeight: '400'}}>Dikirim</Text>
-            </View>
-            <View style={{alignItems: 'center'}}>
-              <Image
-                source={require('../assets/more-fill.png')}
-                style={{width: 50, height: 50, borderRadius: 50 / 2}}
-              />
-              <Text style={{fontSize: 14, fontWeight: '400'}}>
-                Beri penilaian
-              </Text>
-            </View>
-          </View>
+          <ListEvent />
         </View>
-
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: COLORS.white,
-            marginTop: 10,
-            marginHorizontal: 20,
-          }}>
-          <View style={{borderBottomWidth: 1}}>
-            <Text style={{marginTop: 20, marginBottom: 10, fontSize: 18}}>
-              Transaksi Terakhir
-            </Text>
-          </View>
-          {Transaksi.map(item => {
-            return (
-              <View
-                key={item.id}
-                style={{
-                  borderBottomWidth: 1,
-                  paddingVertical: 20,
-                }}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                  }}>
-                  <RemixIcon name="ri-wallet-fill" color="#1d1d1d" size="34" />
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      width: '87%',
-                      marginLeft: 10,
-                    }}>
-                    <View style={{}}>
-                      <Text
-                        style={{
-                          fontSize: 16,
-                          color: '#1d1d1d',
-                          fontWeight: '400',
-                        }}>
-                        {item.payment}
-                      </Text>
-                      <Text
-                        style={{
-                          fontSize: 14,
-                          color: '#1d1d1d',
-                          fontWeight: '400',
-                        }}>
-                        {item.date}
-                      </Text>
-                    </View>
-                    <View style={{alignItems: 'flex-end'}}>
-                      <Text
-                        style={{
-                          fontSize: 16,
-                          color: '#1d1d1d',
-                          fontWeight: '400',
-                        }}>
-                        {item.price}
-                      </Text>
-                      <Text
-                        style={
-                          item.review === 'Berhasil'
-                            ? {color: 'green'}
-                            : {color: 'red'}
-                        }>
-                        {item.review}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            );
-          })}
-        </View>
+        <ListTransaksi />
       </ScrollView>
     </SafeAreaView>
   );

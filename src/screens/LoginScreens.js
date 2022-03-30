@@ -10,7 +10,7 @@ import {
   Alert,
 } from 'react-native';
 import React, {useState} from 'react';
-import {ButtonPrimary} from '../components';
+import ButtonPrimary from '../components/atoms/ButtonPrimary';
 import {LoginStyles} from '../styles/LoginStyles';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -169,7 +169,7 @@ const LoginScreens = ({navigation}) => {
           <ButtonPrimary
             title="Masuk"
             style={{marginVertical: 20}}
-            onPress={() => onHandle()}
+            onPress={() => navigation.navigate('HomeScreens')}
           />
           <View
             style={{

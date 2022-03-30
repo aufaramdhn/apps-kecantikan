@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import RemixIcon from 'react-native-remix-icon';
-import {ButtonPrimary} from '.';
-import COLORS from '../constant/Colors';
+import ButtonPrimary from './ButtonPrimary';
+import COLORS from '../../constant/Colors';
 
 const ModalPopUp = () => {
   const [modalVisible, setModalVisible] = useState(false);

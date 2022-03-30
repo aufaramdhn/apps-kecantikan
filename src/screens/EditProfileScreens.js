@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import RemixIcon from 'react-native-remix-icon';
-import {ButtonPrimary} from '../components';
+import ButtonPrimary from '../components/atoms/ButtonPrimary';
 import COLORS from '../constant/Colors';
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';

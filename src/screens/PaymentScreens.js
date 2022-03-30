@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import RemixIcon from 'react-native-remix-icon';
-import {ButtonPrimary} from '../components';
+import ButtonPrimary from '../components/atoms/ButtonPrimary';
 import COLORS from '../constant/Colors';
 import {PaymentStyles} from '../styles/PaymentStyles';
 

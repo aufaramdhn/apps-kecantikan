@@ -10,7 +10,7 @@ import {
 import React, {useState} from 'react';
 import COLORS from '../constant/Colors';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {ModalPopUp} from '../components';
+import ModalPopUp from '../components/atoms/ModalPopUp';
 import {Picker} from '@react-native-picker/picker';
 import RemixIcon from 'react-native-remix-icon';
 
@@ -192,7 +192,7 @@ const RegisterScreens = ({navigation}) => {
               </Picker>
             </View>
           </View>
-          <Input title="Alamat" style={{height: 90}} />
+          <Input title="Alamat" style={{height: 90, text}} />
           <View style={{marginHorizontal: 10, marginVertical: 10}}>
             <Text>Password</Text>
             <View

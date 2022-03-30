@@ -1,7 +1,7 @@
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import RemixIcon from 'react-native-remix-icon';
-import COLORS from '../constant/Colors';
+import COLORS from '../../constant/Colors';
 
 const BtnRightTrack = ({navigation}) => {
   return (

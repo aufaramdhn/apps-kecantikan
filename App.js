@@ -20,20 +20,20 @@ import {
   TrackScreens,
 } from './src/screens';
 import Tabs from './src/navigations/Tabs';
-import BtnBack from './src/components/BtnBack';
-import BtnRightEditProfile from './src/components/BtnRightEditProfile';
-import BtnRightChat from './src/components/BtnRightChat';
-import BtnBackArrow from './src/components/BtnBackArrow';
-import BtnCart from './src/components/BtnCart';
-import BtnRightTrack from './src/components/BtnRightTrack';
+import BtnBack from './src/components/atoms/BtnBack';
+import BtnRightEditProfile from './src/components/atoms/BtnRightEditProfile';
+import BtnRightChat from './src/components/atoms/BtnRightChat';
+import BtnBackArrow from './src/components/atoms/BtnBackArrow';
+import BtnCart from './src/components/atoms/BtnCart';
+import BtnRightTrack from './src/components/atoms/BtnRightTrack';
 
 const Stack = createNativeStackNavigator();
 
 const App = ({navigation}) => {
   return (
     <NavigationContainer>
-      <Stack.Navigator intialRouteName={'HomeScreens'}>
-        {/* <Stack.Screen
+      <Stack.Navigator intialRouteName={'OnBoardScreens'}>
+        <Stack.Screen
           name="OnBoardScreens"
           component={OnBoardScreens}
           options={{
@@ -53,7 +53,7 @@ const App = ({navigation}) => {
           options={{
             headerShown: false,
           }}
-        /> */}
+        />
         <Stack.Screen
           name="HomeScreens"
           component={Tabs}
@@ -61,7 +61,7 @@ const App = ({navigation}) => {
             headerShown: false,
           }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="PaymentScreens"
           component={PaymentScreens}
           options={{
@@ -211,7 +211,7 @@ const App = ({navigation}) => {
               return <BtnRightTrack />;
             },
           })}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
