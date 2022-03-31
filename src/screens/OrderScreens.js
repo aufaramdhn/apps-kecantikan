@@ -44,7 +44,7 @@ const Data = [
     dateKirim: 'Minggu, 20 Mar 2022',
     ekspedisi: 'J&T Ekspress',
     status: 'Belum Dibayar',
-    image: require('../assets/image3.jpg'),
+    image: require('../assets/product/face-3.jpg'),
   },
   {
     id: 2,
@@ -57,7 +57,7 @@ const Data = [
     dateKirim: 'Minggu, 20 Mar 2022',
     ekspedisi: 'J&T Ekspress',
     status: 'Dikemas',
-    image: require('../assets/image3.jpg'),
+    image: require('../assets/product/face-3.jpg'),
   },
   {
     id: 3,
@@ -70,7 +70,7 @@ const Data = [
     dateKirim: 'Minggu, 20 Mar 2022',
     ekspedisi: 'J&T Ekspress',
     status: 'Dikirim',
-    image: require('../assets/image3.jpg'),
+    image: require('../assets/product/face-3.jpg'),
   },
   {
     id: 11,
@@ -83,7 +83,7 @@ const Data = [
     dateKirim: 'Minggu, 20 Mar 2022',
     ekspedisi: 'J&T Ekspress',
     status: 'Dikirim',
-    image: require('../assets/image3.jpg'),
+    image: require('../assets/product/face-3.jpg'),
   },
   {
     id: 4,
@@ -96,7 +96,7 @@ const Data = [
     dateKirim: 'Minggu, 20 Mar 2022',
     ekspedisi: 'J&T Ekspress',
     status: 'Selesai',
-    image: require('../assets/image3.jpg'),
+    image: require('../assets/product/face-3.jpg'),
   },
   {
     id: 5,
@@ -109,7 +109,7 @@ const Data = [
     dateKirim: 'Minggu, 20 Mar 2022',
     ekspedisi: 'J&T Ekspress',
     status: 'Dibatalkan',
-    image: require('../assets/image3.jpg'),
+    image: require('../assets/product/face-3.jpg'),
   },
   {
     id: 6,
@@ -122,7 +122,7 @@ const Data = [
     dateKirim: 'Minggu, 20 Mar 2022',
     ekspedisi: 'J&T Ekspress',
     status: 'Pengembalian',
-    image: require('../assets/image3.jpg'),
+    image: require('../assets/product/face-3.jpg'),
   },
 ];
 

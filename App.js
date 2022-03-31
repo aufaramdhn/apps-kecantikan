@@ -27,10 +27,12 @@ import BtnRightChat from './src/components/atoms/BtnRightChat';
 import BtnBackArrow from './src/components/atoms/BtnBackArrow';
 import BtnCart from './src/components/atoms/BtnCart';
 import BtnRightTrack from './src/components/atoms/BtnRightTrack';
+import {useSelector} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
-const App = ({navigation}) => {
+function App() {
+  const NamePage = useSelector(state => state.NamePage);
   return (
     <NavigationContainer>
       <Stack.Navigator intialRouteName={'CartScreens'}>
@@ -89,9 +91,9 @@ const App = ({navigation}) => {
           component={NewScreens}
           options={{
             headerShown: true,
-            title: 'Face',
+            title: NamePage.namePage,
             headerLeft: () => {
-              return <BtnBackArrow />;
+              return <BtnBack />;
             },
           }}
         />
@@ -221,7 +223,7 @@ const App = ({navigation}) => {
               backgroundColor: 'white',
               elevation: 0,
             },
-            title: route.params.data.status,
+            title: 'Voucher',
             headerLeft: () => {
               return <BtnBack styles={{marginRight: 10}} />;
             },
@@ -233,7 +235,7 @@ const App = ({navigation}) => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 
 export default App;
 

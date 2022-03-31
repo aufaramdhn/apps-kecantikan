@@ -16,27 +16,27 @@ const ListBank = [
   {
     id: '1',
     bank: 'Bank BCA (Dicek otomatis)',
-    image: require('../assets/bca.png'),
+    image: require('../assets/logo/bca.png'),
   },
   {
     id: '2',
     bank: 'Bank Mandiri & Lainnya (Dicek otomatis)',
-    image: require('../assets/mandiri.png'),
+    image: require('../assets/logo/mandiri.png'),
   },
   {
     id: '3',
     bank: 'Bank BNI (Dicek otomatis)',
-    image: require('../assets/bni.png'),
+    image: require('../assets/logo/bni.png'),
   },
   {
     id: '4',
     bank: 'Bank BRI (Dicek otomatis)',
-    image: require('../assets/bri.png'),
+    image: require('../assets/logo/bri.png'),
   },
   {
     id: '5',
     bank: 'Bank Lainnya (Dicek otomatis)',
-    image: require('../assets/more-line.png'),
+    image: require('../assets/icon/more-line.png'),
   },
 ];
 
@@ -44,22 +44,22 @@ const MetodePembayaran = [
   {
     id: '1',
     name: 'Indomaret',
-    image: require('../assets/indomaret.png'),
+    image: require('../assets/logo/indomaret.png'),
   },
   {
     id: '2',
     name: 'Alfamart',
-    image: require('../assets/alfa.jpg'),
+    image: require('../assets/logo/alfa.jpg'),
   },
   {
     id: '3',
     name: 'Gopay',
-    image: require('../assets/gopay.jpg'),
+    image: require('../assets/logo/gopay.jpg'),
   },
   {
     id: '4',
     name: 'Akulaku',
-    image: require('../assets/akulaku.jpg'),
+    image: require('../assets/logo/akulaku.jpg'),
   },
 ];
 
@@ -102,7 +102,7 @@ const PaymentScreens = ({navigation}) => {
         <Payment
           title="Transfer Bank"
           icon="ri-arrow-right-s-line"
-          source={require('../assets/arrow-left-right-line.png')}
+          source={require('../assets/icon/arrow-left-right-line.png')}
         />
         {onClick ? (
           <>
@@ -110,7 +110,7 @@ const PaymentScreens = ({navigation}) => {
               title="Kartu Kredit / Debit nline"
               icon="ri-arrow-down-s-line"
               onPress={() => onClickOpen(true)}
-              source={require('../assets/bank-card-fill.png')}
+              source={require('../assets/icon/bank-card-fill.png')}
             />
             {ListBank.map(e => {
               return (
@@ -147,7 +147,7 @@ const PaymentScreens = ({navigation}) => {
             title="Kartu Kredit / Debit nline"
             icon="ri-arrow-right-s-line"
             onPress={() => onClickOpen(true)}
-            source={require('../assets/bank-card-fill.png')}
+            source={require('../assets/icon/bank-card-fill.png')}
           />
         )}
         {MetodePembayaran.map(i => {

@@ -1,8 +1,10 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Face from '../../constant/DataFace';
+import {useNavigation} from '@react-navigation/native';
 
 const ListSkincare2 = () => {
+  const navigation = useNavigation();
   return (
     <View style={{marginHorizontal: 15}}>
       <Text
@@ -16,9 +18,10 @@ const ListSkincare2 = () => {
       </Text>
       {Face.map(item => {
         return (
-          <View
+          <TouchableOpacity
             key={item.id}
-            style={{flexDirection: 'row', marginVertical: 10}}>
+            style={{flexDirection: 'row', marginVertical: 10}}
+            onPress={() => navigation.navigate('DetailScreens', {data: item})}>
             <View>
               <Image
                 source={item.image}
@@ -53,7 +56,7 @@ const ListSkincare2 = () => {
                 </Text>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         );
       })}
     </View>

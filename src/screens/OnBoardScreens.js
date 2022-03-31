@@ -20,7 +20,7 @@ const OnBoardScreens = ({navigation}) => {
           flex: 2,
         }}>
         <Image
-          source={require('../assets/onboard.jpg')}
+          source={require('../assets/product/face-4.jpg')}
           style={{
             width: '100%',
             height: '100%',

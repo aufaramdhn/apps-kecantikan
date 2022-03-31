@@ -4,7 +4,7 @@ import Swiper from 'react-native-swiper';
 
 const ListBanner = () => {
   return (
-    <View style={{flex: 1, marginTop: 30}}>
+    <View style={{flex: 1, marginTop: 30, paddingHorizontal: 10}}>
       <Swiper
         autoplay
         autoplayTime={5}
@@ -45,13 +45,13 @@ const ListBanner = () => {
           }}>
           <Image
             resizeMode="stretch"
-            source={require('../../assets/banner.jpg')}
+            source={require('../../assets/banner/banner.jpg')}
           />
         </View>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Image
             resizeMode="stretch"
-            source={require('../../assets/banner1.jpg')}
+            source={require('../../assets/banner/banner1.jpg')}
           />
         </View>
       </Swiper>

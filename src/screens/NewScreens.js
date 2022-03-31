@@ -12,11 +12,12 @@ import COLORS from '../constant/Colors';
 import RemixIcon from 'react-native-remix-icon';
 import NewFace from '../constant/NewFace';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 const CardPopuler = ({item}) => {
   const navigation = useNavigation();
   return (
-    <View
+    <TouchableOpacity
       style={{
         backgroundColor: '#fff',
         margin: 5,
@@ -24,15 +25,13 @@ const CardPopuler = ({item}) => {
         borderRadius: 20,
         elevation: 5,
         marginBottom: 20,
-      }}>
+      }}
+      onPress={() => navigation.navigate('DetailScreens', {data: item})}>
       <View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('DetailScreens', {data: item})}>
-          <Image
-            source={item.image}
-            style={{width: 165, height: 160, borderRadius: 20}}
-          />
-        </TouchableOpacity>
+        <Image
+          source={item.image}
+          style={{width: 165, height: 160, borderRadius: 20}}
+        />
         <Text
           style={{
             fontSize: 18,
@@ -67,11 +66,13 @@ const CardPopuler = ({item}) => {
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const NewScreens = () => {
+  const NavReducer = useSelector(state => state.NavReducer);
+
   return (
     <FlatList
       scrollEnabled={true}
@@ -79,7 +80,7 @@ const NewScreens = () => {
       numColumns={2}
       keyExtractor={item => item.id}
       contentContainerStyle={{padding: 20, backgroundColor: '#fff'}}
-      data={NewFace}
+      data={NavReducer.dataNav}
       renderItem={({item}) => <CardPopuler item={item} />}
     />
   );

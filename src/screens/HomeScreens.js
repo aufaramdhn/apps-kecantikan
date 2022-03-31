@@ -11,11 +11,7 @@ import {
   RefreshControl,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
-
-import Face from '../constant/DataFace';
-import Skincare from '../constant/DataSkincare';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import HeaderHome from '../components/moleculs/HeaderHome';
 import axios from 'axios';
@@ -23,10 +19,203 @@ import ListSkincare from '../containers/organism/ListSkincare';
 import ListSkincare2 from '../containers/organism/ListSkincare2';
 import ListBanner from '../containers/organism/ListBanner';
 import ListCategory from '../containers/organism/ListCategory';
+import {useDispatch} from 'react-redux';
 
 const HomeScreens = ({navigation}) => {
+  const Face = [
+    {
+      id: 1,
+      name: 'Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-1.jpg'),
+    },
+    {
+      id: 2,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-2.jpg'),
+    },
+    {
+      id: 3,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-3.jpg'),
+    },
+    {
+      id: 4,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-4.jpg'),
+    },
+    {
+      id: 5,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-5.jpg'),
+    },
+    {
+      id: 6,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-6.jpg'),
+    },
+  ];
+
+  const Body = [
+    {
+      id: 1,
+      name: 'Coffe Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-1.jpg'),
+    },
+    {
+      id: 2,
+      name: 'Rice Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-2.jpg'),
+    },
+    {
+      id: 3,
+      name: 'Brownsugar Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-3.jpg'),
+    },
+    {
+      id: 4,
+      name: 'Jicama Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-4.jpg'),
+    },
+    {
+      id: 5,
+      name: 'Fruit Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-5.jpg'),
+    },
+    {
+      id: 6,
+      name: 'Charcoal Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-6.jpg'),
+    },
+  ];
+  const Hair = [
+    {
+      id: 1,
+      name: 'Hair Oil',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-1.jpg'),
+    },
+    {
+      id: 2,
+      name: 'Shampoo',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-2.jpg'),
+    },
+    {
+      id: 3,
+      name: 'Hair Serum',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-3.jpg'),
+    },
+    {
+      id: 4,
+      name: 'Hair Oil',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-4.jpg'),
+    },
+    {
+      id: 5,
+      name: 'Conditioner',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-5.jpg'),
+    },
+    {
+      id: 6,
+      name: 'Shampoo',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-6.jpg'),
+    },
+  ];
+  const Tooth = [
+    {
+      id: 1,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-1.jpg'),
+    },
+    {
+      id: 2,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-2.jpg'),
+    },
+    {
+      id: 3,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-3.jpg'),
+    },
+    {
+      id: 4,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-4.jpg'),
+    },
+    {
+      id: 5,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-5.jpg'),
+    },
+    {
+      id: 6,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-6.jpg'),
+    },
+  ];
+
+  const dispatch = useDispatch();
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState([]);
+
+  const onHandleChange = dataLempar => {
+    dispatch({
+      type: 'SET_DATA_NAV',
+      inputValue: dataLempar,
+    });
+  };
+  const onHandleNamePage = dataLempar => {
+    dispatch({
+      type: 'SET_NAME_PAGE',
+      inputValue: dataLempar,
+    });
+  };
 
   async function fetchData() {
     const Token = await AsyncStorage.getItem('token');
@@ -41,7 +230,6 @@ const HomeScreens = ({navigation}) => {
         //   await AsyncStorage.setItem('token', res.data.success.token);
         // };
         // storeToken();
-        console.log(res.data);
         setData(res.data);
       })
       .catch(e => {
@@ -71,7 +259,7 @@ const HomeScreens = ({navigation}) => {
   }, []);
 
   return (
-    <SafeAreaView style={{flex: 1, paddingHorizontal: 10}}>
+    <SafeAreaView style={{flex: 1}}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         refreshControl={
@@ -82,7 +270,58 @@ const HomeScreens = ({navigation}) => {
         {/* Hero Section */}
         <ListBanner />
         {/* Flatlist 1 */}
-        <ListCategory />
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginVertical: 30,
+          }}>
+          <TouchableOpacity
+            onPress={() => {
+              onHandleChange(Face);
+              navigation.navigate('NewScreens');
+              onHandleNamePage('Face');
+            }}>
+            <Text
+              style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
+              Face
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              onHandleChange(Body);
+              navigation.navigate('NewScreens');
+              onHandleNamePage('Body');
+            }}>
+            <Text
+              style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
+              Body
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              onHandleChange(Hair);
+              navigation.navigate('NewScreens');
+              onHandleNamePage('Hair');
+            }}>
+            <Text
+              style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
+              Hair
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              onHandleChange(Tooth);
+              navigation.navigate('NewScreens');
+              onHandleNamePage('Tooth');
+            }}>
+            <Text
+              style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
+              Tooth
+            </Text>
+          </TouchableOpacity>
+        </View>
         <ListSkincare />
         {/* Flatlist 2 */}
         <ListSkincare2 />

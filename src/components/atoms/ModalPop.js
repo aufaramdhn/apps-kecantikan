@@ -4,12 +4,10 @@ import {
   Modal,
   StyleSheet,
   Text,
-  Pressable,
   View,
   TouchableOpacity,
 } from 'react-native';
 import RemixIcon from 'react-native-remix-icon';
-import {ButtonPrimary} from '.';
 import COLORS from '../../constant/Colors';
 
 const Ekspedisi = [

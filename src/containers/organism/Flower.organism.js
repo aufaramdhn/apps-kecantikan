@@ -13,9 +13,9 @@ const Flower = () => {
         paddingHorizontal: 20,
         paddingVertical: 30,
       }}>
-      <FlowerMoleculs />
-      <FlowerMoleculs />
-      <FlowerMoleculs />
+      <FlowerMoleculs icon="ri-leaf-fill" name="Flower" />
+      <FlowerMoleculs icon="ri-leaf-fill" name="Natural" />
+      <FlowerMoleculs icon="ri-leaf-fill" name="C+Neutral" />
     </View>
   );
 };

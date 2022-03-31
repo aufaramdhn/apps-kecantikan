@@ -16,14 +16,14 @@ const Data = [
     name: 'test',
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo deleniti praesentium aliquam aliquid laboriosam sequi..',
     time: '2 Bulan yang lalu',
-    image: require('../assets/coupon-line.png'),
+    image: require('../assets/icon/coupon-line.png'),
   },
   {
     id: 2,
     name: 'test',
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo deleniti praesentium aliquam aliquid laboriosam sequi.',
     time: '2 Bulan yang lalu',
-    image: require('../assets/coupon-line.png'),
+    image: require('../assets/icon/coupon-line.png'),
   },
   {
     id: 3,

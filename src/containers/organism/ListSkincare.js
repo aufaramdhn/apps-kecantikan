@@ -25,6 +25,7 @@ const ListSkincare = () => {
         showsHorizontalScrollIndicator={false}
         data={Skincare}
         keyExtractor={item => item.id}
+        style={{paddingHorizontal: 10}}
         renderItem={({item}) => (
           <View
             key={item.id}
@@ -37,7 +38,9 @@ const ListSkincare = () => {
             }}>
             <View>
               <TouchableOpacity
-                onPress={() => navigation.navigate('DetailScreens')}>
+                onPress={() =>
+                  navigation.navigate('DetailScreens', {data: item})
+                }>
                 <Image
                   source={item.image}
                   style={{width: 165, height: 160, borderRadius: 20}}
@@ -59,7 +62,8 @@ const ListSkincare = () => {
                     marginVertical: 10,
                     alignItems: 'center',
                   }}>
-                  <Text style={{fontSize: 18, marginLeft: 10}}>
+                  <Text
+                    style={{fontSize: 18, marginLeft: 10, color: COLORS.green}}>
                     {item.price}
                   </Text>
                   <View
