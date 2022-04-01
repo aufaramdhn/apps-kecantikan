@@ -51,8 +51,8 @@ const ListVoucherCashback = () => {
           <View
             style={{
               backgroundColor: COLORS.primary,
-              paddingVertical: 10,
-              paddingHorizontal: 5,
+              paddingVertical: 5,
+              paddingHorizontal: 4,
               alignItems: 'center',
             }}>
             <RemixIcon
@@ -72,10 +72,28 @@ const ListVoucherCashback = () => {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-between',
+              paddingVertical: 10,
             }}>
             <View style={{flex: 1}}>
-              <Text style={{color: COLORS.black}}>{item.desc}</Text>
-              <Text>{item.exp}</Text>
+              <Text
+                style={{
+                  color: COLORS.black,
+                  width: '60%',
+                  textAlign: 'center',
+                  alignSelf: 'center',
+                }}>
+                {item.desc}
+              </Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  marginVertical: 5,
+                }}>
+                <RemixIcon name="ri-calendar-2-line" size="18" />
+                <Text style={{fontSize: 10, marginRight: 10}}>{item.exp}</Text>
+              </View>
             </View>
           </View>
         </View>
