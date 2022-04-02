@@ -25,7 +25,7 @@ const ListSkincare = () => {
         showsHorizontalScrollIndicator={false}
         data={Skincare}
         keyExtractor={item => item.id}
-        style={{paddingHorizontal: 10}}
+        style={{paddingLeft: 20, paddingRight: 20}}
         renderItem={({item}) => (
           <View
             key={item.id}

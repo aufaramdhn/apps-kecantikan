@@ -47,13 +47,14 @@ const ListVoucherOngkir = () => {
             flexDirection: 'row',
             alignItems: 'center',
             marginVertical: 20,
+            marginHorizontal: 20,
             elevation: 8,
             backgroundColor: COLORS.white,
           }}>
-          <View style={{backgroundColor: COLORS.primary, padding: 20}}>
+          <View style={{backgroundColor: COLORS.primary, padding: 10}}>
             <RemixIcon
               name="ri-shopping-bag-fill"
-              size="50"
+              size="70"
               color={COLORS.white}
             />
           </View>
