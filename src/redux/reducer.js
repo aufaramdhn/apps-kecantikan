@@ -11,6 +11,12 @@ const NavReducer = (state = initialData, action) => {
       ['dataNav']: action.inputValue,
     };
   }
+  if (action.type === 'SET_DATA_PROMO') {
+    return {
+      ...state,
+      ['dataNav']: action.inputValue,
+    };
+  }
   return state;
 };
 

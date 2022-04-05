@@ -14,6 +14,7 @@ import ButtonPrimary from '../components/atoms/ButtonPrimary';
 import COLORS from '../constant/Colors';
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {EditProfileStyles} from '../styles/EditProfileStyles';
 
 const EditProfileScreen = ({navigation}) => {
   const [selectedProvinsi, setSelectedProvinsi] = useState();
@@ -39,28 +40,13 @@ const EditProfileScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            paddingVertical: 50,
-          }}>
+        <View style={EditProfileStyles.container}>
           <TouchableOpacity>
             <Image
               source={require('../assets/img.jpg')}
               style={{height: 100, width: 100, zIndex: 0}}
             />
-            <TouchableOpacity
-              style={{
-                backgroundColor: COLORS.primary,
-                padding: 6,
-                borderRadius: 20,
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                zIndex: 10,
-              }}>
+            <TouchableOpacity style={EditProfileStyles.containerIcon}>
               <RemixIcon name="ri-camera-fill" color={COLORS.white} size="22" />
             </TouchableOpacity>
           </TouchableOpacity>
@@ -96,14 +82,7 @@ const EditProfileScreen = ({navigation}) => {
               Username
             </Text>
             <TextInput
-              style={{
-                borderWidth: 1,
-                borderRadius: 5,
-                borderColor: COLORS.grey,
-                padding: 5,
-                marginTop: 10,
-                paddingVertical: 10,
-              }}
+              style={[EditProfileStyles.containerInput, {padding: 5}]}
             />
           </View>
           <View
@@ -117,15 +96,13 @@ const EditProfileScreen = ({navigation}) => {
                 Nama Depan
               </Text>
               <TextInput
-                style={{
-                  borderWidth: 1,
-                  borderRadius: 5,
-                  borderColor: COLORS.grey,
-                  paddingVertical: 2,
-                  paddingRight: 145,
-                  marginTop: 10,
-                  paddingVertical: 10,
-                }}
+                style={[
+                  EditProfileStyles.containerInput,
+                  {
+                    paddingVertical: 2,
+                    paddingRight: 145,
+                  },
+                ]}
               />
             </View>
             <View style={{marginBottom: 10}}>
@@ -133,15 +110,13 @@ const EditProfileScreen = ({navigation}) => {
                 Nama Belakang
               </Text>
               <TextInput
-                style={{
-                  borderWidth: 1,
-                  borderRadius: 5,
-                  borderColor: COLORS.grey,
-                  paddingVertical: 2,
-                  paddingRight: 145,
-                  marginTop: 10,
-                  paddingVertical: 10,
-                }}
+                style={
+                  (EditProfileStyles.containerInput,
+                  {
+                    paddingVertical: 2,
+                    paddingRight: 145,
+                  })
+                }
               />
             </View>
           </View>
@@ -150,25 +125,24 @@ const EditProfileScreen = ({navigation}) => {
               Tanggal Lahir
             </Text>
             <TouchableOpacity
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                borderWidth: 1,
-                borderRadius: 5,
-                borderColor: COLORS.grey,
-                padding: 5,
-                marginTop: 10,
-                paddingVertical: 10,
-              }}
+              style={[
+                EditProfileStyles.containerInput,
+                {
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  padding: 5,
+                },
+              ]}
               onPress={showDatepicker}>
               <RemixIcon name="ri-calendar-line" color="#c7c7c7" size="28" />
               <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: '600',
-                  color: '#c7c7c7',
-                  marginLeft: 10,
-                }}>
+                style={[
+                  EditProfileStyles.textPicker,
+                  {
+                    color: '#c7c7c7',
+                    marginLeft: 10,
+                  },
+                ]}>
                 {date.toLocaleDateString()}
               </Text>
               {show && (
@@ -188,14 +162,12 @@ const EditProfileScreen = ({navigation}) => {
               Email
             </Text>
             <TextInput
-              style={{
-                borderWidth: 1,
-                borderRadius: 5,
-                borderColor: COLORS.grey,
-                padding: 5,
-                marginTop: 10,
-                paddingVertical: 10,
-              }}
+              style={[
+                EditProfileStyles.containerInput,
+                {
+                  padding: 5,
+                },
+              ]}
             />
           </View>
           <View style={{marginBottom: 10}}>
@@ -203,14 +175,12 @@ const EditProfileScreen = ({navigation}) => {
               No. Telp
             </Text>
             <TextInput
-              style={{
-                borderWidth: 1,
-                borderRadius: 5,
-                borderColor: COLORS.grey,
-                padding: 5,
-                marginTop: 10,
-                paddingVertical: 10,
-              }}
+              style={[
+                EditProfileStyles.containerInput,
+                {
+                  padding: 5,
+                },
+              ]}
             />
           </View>
           <View style={{marginBottom: 10}}>
@@ -218,33 +188,20 @@ const EditProfileScreen = ({navigation}) => {
               Alamat
             </Text>
             <TextInput
-              style={{
-                borderWidth: 1,
-                borderRadius: 5,
-                borderColor: COLORS.grey,
-                padding: 5,
-                marginTop: 10,
-                paddingVertical: 10,
-              }}
+              style={[
+                EditProfileStyles.containerInput,
+                {
+                  padding: 5,
+                },
+              ]}
             />
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <View style={{marginVertical: 10}}>
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: '400',
-                  color: '#1d1d1d',
-                  marginBottom: 10,
-                }}>
+              <Text style={[EditProfileStyles.textPicker, {color: '#1d1d1d'}]}>
                 Provinsi
               </Text>
-              <View
-                style={{
-                  borderWidth: 2,
-                  borderRadius: 10,
-                  borderColor: '#c7c7c7',
-                }}>
+              <View style={EditProfileStyles.containerPicker}>
                 <Picker
                   style={{color: COLORS.grey, paddingLeft: 165}}
                   selectedValue={selectedProvinsi}
@@ -258,21 +215,10 @@ const EditProfileScreen = ({navigation}) => {
               </View>
             </View>
             <View style={{marginVertical: 10}}>
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: '400',
-                  color: '#1d1d1d',
-                  marginBottom: 10,
-                }}>
+              <Text style={[EditProfileStyles.textPicker, {color: '#1d1d1d'}]}>
                 Kota/Kabupaten
               </Text>
-              <View
-                style={{
-                  borderWidth: 2,
-                  borderRadius: 10,
-                  borderColor: '#c7c7c7',
-                }}>
+              <View style={EditProfileStyles.containerPicker}>
                 <Picker
                   style={{color: COLORS.grey, paddingLeft: 165}}
                   selectedValue={selectedKotaKab}
@@ -288,22 +234,16 @@ const EditProfileScreen = ({navigation}) => {
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <View style={{marginVertical: 10}}>
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: '400',
-                  color: '#1d1d1d',
-                  marginBottom: 10,
-                }}>
+              <Text style={[EditProfileStyles.textPicker, {color: '#1d1d1d'}]}>
                 Kecamatan
               </Text>
               <View
-                style={{
-                  borderWidth: 2,
-                  borderRadius: 10,
-                  borderColor: '#c7c7c7',
-                  marginRight: 10,
-                }}>
+                style={[
+                  EditProfileStyles.containerPicker,
+                  {
+                    marginRight: 10,
+                  },
+                ]}>
                 <Picker
                   style={{color: COLORS.grey, paddingLeft: 165}}
                   selectedValue={selectedKecamatan}
@@ -323,14 +263,7 @@ const EditProfileScreen = ({navigation}) => {
               <View style={{marginVertical: 10}}>
                 <TextInput
                   placeholder="Kode Pos"
-                  style={{
-                    borderWidth: 2,
-                    borderRadius: 10,
-                    borderColor: '#c7c7c7',
-                    paddingRight: 95,
-                    paddingVertical: 12,
-                    paddingLeft: 10,
-                  }}
+                  style={EditProfileStyles.containerKodePos}
                 />
               </View>
             </View>
