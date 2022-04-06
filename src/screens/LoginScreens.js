@@ -96,15 +96,7 @@ const LoginScreens = ({navigation}) => {
             source={require('../assets/img.jpg')}
             style={LoginStyles.ImageProfile}
           />
-          <Text
-            style={{
-              marginTop: 30,
-              fontSize: 24,
-              color: COLORS.black,
-              fontWeight: 'bold',
-            }}>
-            Selamat Datang!
-          </Text>
+          <Text style={LoginStyles.textWelcome}>Selamat Datang!</Text>
           <Text style={{marginTop: 8, fontSize: 18}}>
             Harap isi data ingin dengan benar
           </Text>
@@ -128,18 +120,7 @@ const LoginScreens = ({navigation}) => {
               style={{marginBottom: 10, marginHorizontal: 10, color: 'black'}}>
               Password
             </Text>
-            <View
-              style={{
-                borderWidth: 2,
-                width: '95%',
-                marginHorizontal: 10,
-                borderRadius: 10,
-                borderColor: COLORS.black,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                paddingHorizontal: 5,
-              }}>
+            <View style={LoginStyles.InputPassword}>
               <TextInput
                 placeholder="Password"
                 value={password}
@@ -155,29 +136,13 @@ const LoginScreens = ({navigation}) => {
               </TouchableOpacity>
             </View>
           </View>
-          <Text
-            style={{
-              textDecorationLine: 'underline',
-              color: '#4285F4',
-              textAlign: 'right',
-              alignSelf: 'flex-end',
-              marginHorizontal: 8,
-              marginVertical: 4,
-            }}>
-            Lupa Kata Sandi ?
-          </Text>
+          <Text style={LoginStyles.TextForgotPass}>Lupa Kata Sandi ?</Text>
           <ButtonPrimary
             title="Masuk"
             style={{marginVertical: 20}}
             onPress={() => navigation.navigate('HomeScreens')}
           />
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginBottom: 30,
-            }}>
+          <View style={LoginStyles.TextRegis}>
             <Text>Belum Memiliki Akun?</Text>
             <TouchableOpacity
               onPress={() => navigation.navigate('RegisterScreens')}>

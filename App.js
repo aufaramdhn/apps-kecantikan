@@ -19,6 +19,7 @@ import {
   CartScreens,
   TrackScreens,
   VoucherScreens,
+  PromoScreens,
 } from './src/screens';
 import Tabs from './src/navigations/Tabs';
 import BtnBack from './src/components/atoms/BtnBack';
@@ -28,6 +29,7 @@ import BtnBackArrow from './src/components/atoms/BtnBackArrow';
 import BtnCart from './src/components/atoms/BtnCart';
 import BtnRightTrack from './src/components/atoms/BtnRightTrack';
 import {useSelector} from 'react-redux';
+import TextInputAtoms from './src/components/atoms/TextInputAtoms';
 
 const Stack = createNativeStackNavigator();
 
@@ -94,6 +96,20 @@ function App() {
             title: NamePage.namePage,
             headerLeft: () => {
               return <BtnBack />;
+            },
+          }}
+        />
+        <Stack.Screen
+          name="PromoScreens"
+          component={PromoScreens}
+          options={{
+            headerShown: true,
+            title: NamePage.namePage,
+            headerLeft: () => {
+              return <BtnBack />;
+            },
+            headerRight: () => {
+              return <TextInputAtoms />;
             },
           }}
         />
@@ -228,7 +244,7 @@ function App() {
               return <BtnBack styles={{marginRight: 10}} />;
             },
             headerRight: () => {
-              return <BtnRightTrack />;
+              return <TextInputAtoms />;
             },
           })}
         />

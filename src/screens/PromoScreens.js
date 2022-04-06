@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   RefreshControl,
+  ScrollView,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import COLORS from '../constant/Colors';
@@ -58,35 +59,45 @@ const CardPopuler = ({item, statusRefresh}) => {
   );
 };
 
-const NewScreens = () => {
+const PromoScreens = ({statusRefresh}) => {
   const NavReducer = useSelector(state => state.NavReducer);
   const [refreshing, setRefreshing] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     setTimeout(function () {
       setRefreshing(false);
+      setLoading(false);
     }, 5000);
   }, []);
 
   return (
-    <FlatList
-      scrollEnabled={true}
-      showsVerticalScrollIndicator={false}
-      numColumns={2}
-      keyExtractor={item => item.id}
-      contentContainerStyle={{padding: 20, backgroundColor: '#fff'}}
-      data={NavReducer.dataNav}
-      renderItem={({item}) => (
-        <CardPopuler item={item} statusRefresh={refreshing} />
-      )}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }
-    />
+    <ScrollView>
+      <View style={{padding: 10}}>
+        <Image
+          source={require('../assets/banner/banner.jpg')}
+          style={{width: '100%', height: 200}}
+        />
+      </View>
+      <FlatList
+        scrollEnabled={true}
+        showsVerticalScrollIndicator={false}
+        numColumns={2}
+        keyExtractor={item => item.id}
+        contentContainerStyle={{padding: 20, backgroundColor: '#fff'}}
+        data={NavReducer.dataNav}
+        renderItem={({item}) => (
+          <CardPopuler item={item} statusRefresh={refreshing} />
+        )}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      />
+    </ScrollView>
   );
 };
 
-export default NewScreens;
+export default PromoScreens;
 
 const styles = StyleSheet.create({});
