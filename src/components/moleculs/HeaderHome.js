@@ -9,8 +9,10 @@ import {
 import React from 'react';
 import RemixIcon from 'react-native-remix-icon';
 import SearchHome from './SearchHome';
+import {useNavigation} from '@react-navigation/native';
 
-const HeaderHome = ({navigation}) => {
+const HeaderHome = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{

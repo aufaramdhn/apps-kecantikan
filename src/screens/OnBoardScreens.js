@@ -10,6 +10,7 @@ import {
 import React from 'react';
 import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
+import {OnBoardStyles} from '../styles/OnBoardStyles';
 
 const OnBoardScreens = ({navigation}) => {
   return (
@@ -21,12 +22,7 @@ const OnBoardScreens = ({navigation}) => {
         }}>
         <Image
           source={require('../assets/product/face-4.jpg')}
-          style={{
-            width: '100%',
-            height: '100%',
-            borderBottomLeftRadius: 10,
-            borderBottomRightRadius: 10,
-          }}
+          style={OnBoardStyles.image}
         />
       </View>
       <View
@@ -35,28 +31,12 @@ const OnBoardScreens = ({navigation}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text
-          style={{
-            color: '#1d1d1d',
-            fontSize: 18,
-            width: 200,
-            textAlign: 'center',
-            fontSize: 28,
-            marginVertical: 10,
-          }}>
+        <Text style={OnBoardStyles.textOnBoard}>
           Let Us Reward You, Naturally
         </Text>
         <TouchableOpacity
           onPress={() => navigation.navigate('RegisterScreens')}>
-          <View
-            style={{
-              backgroundColor: COLORS.primary,
-              width: 70,
-              height: 70,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: 15,
-            }}>
+          <View style={OnBoardStyles.containerButton}>
             <RemixIcon name="ri-arrow-right-s-line" color="white" size="30" />
           </View>
         </TouchableOpacity>
