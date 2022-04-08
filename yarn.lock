@@ -6218,9 +6218,15 @@
     "prop-types" "^15.7.x"
 
 "react-native-reanimated@^2.1.0", "react-native-reanimated@^2.5.0", "react-native-reanimated@>=2.0.0":
+<<<<<<< HEAD
+  "integrity" "sha512-P4v6364AKuKkHOAbsXKe0lta2EkhID8OqZoIYGhjbJF67bt7l6fktSTrVyaxkpMHFngzlvVYWFDqFSIQvwu6WA=="
+  "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.5.0.tgz"
+  "version" "2.5.0"
+=======
   "integrity" "sha512-TG7u0d1iTx6BRQXhUp9DKEW/9K6169qiX9vweC+qOcVffGSZvjDZ+OyyI0faXIDvcf5LRHAud3mNtO3ANaHRhQ=="
   "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.6.0.tgz"
   "version" "2.6.0"
+>>>>>>> 12559ec75236daba6456ea6b2b3a8927bf9836ff
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@types/invariant" "^2.2.35"

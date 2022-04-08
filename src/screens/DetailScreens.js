@@ -12,6 +12,7 @@ import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
 import ButtonPrimary from '../components/atoms/ButtonPrimary';
 import Flower from '../containers/organism/Flower.organism';
+import {DetailStyles} from '../styles/DetailStyles';
 
 const DetailScreens = ({route, navigation}) => {
   return (
@@ -22,26 +23,11 @@ const DetailScreens = ({route, navigation}) => {
           <View style={{flex: 1}}>
             <Image
               source={route.params.data.image}
-              style={{
-                width: '100%',
-                height: 400,
-                zIndex: 0,
-                borderBottomLeftRadius: 20,
-                borderBottomRightRadius: 20,
-                backgroundColor: '#1d1d1d',
-              }}
+              style={DetailStyles.image}
             />
           </View>
           <Flower />
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: COLORS.white,
-              borderTopRightRadius: 50,
-              borderTopLeftRadius: 50,
-              paddingHorizontal: 20,
-              paddingTop: 40,
-            }}>
+          <View style={DetailStyles.containerDesc}>
             <View
               style={{
                 flexDirection: 'row',
@@ -81,16 +67,7 @@ const DetailScreens = ({route, navigation}) => {
                 paddingVertical: 40,
               }}>
               <Text style={{fontSize: 18}}>{route.params.data.price}</Text>
-              <View
-                style={{
-                  borderWidth: 1,
-                  padding: 10,
-                  flexDirection: 'row',
-                  borderRadius: 15,
-                  width: '30%',
-                  justifyContent: 'space-between',
-                  height: 45,
-                }}>
+              <View style={DetailStyles.containerFooter}>
                 <RemixIcon name="ri-subtract-line" />
                 <Text style={{fontSize: 18, fontWeight: '400'}}>2</Text>
                 <RemixIcon name="ri-add-line" />

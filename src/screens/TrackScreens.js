@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import React from 'react';
 import COLORS from '../constant/Colors';
 import RemixIcon from 'react-native-remix-icon';
+import {TrackStyle} from '../styles/TrackStyles';
 
 const Date = [
   {
@@ -48,17 +49,7 @@ const TrackScreens = ({route, navigation}) => {
         style={{
           flex: 1,
         }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: COLORS.white,
-            marginHorizontal: 20,
-            marginVertical: 30,
-            padding: 25,
-            elevation: 5,
-          }}>
+        <View style={TrackStyle.containerImg}>
           <Image
             source={route.params.data.image}
             style={{width: 70, height: 70, marginRight: 5}}
@@ -74,13 +65,7 @@ const TrackScreens = ({route, navigation}) => {
             </Text>
           </View>
         </View>
-        <View
-          style={{
-            backgroundColor: COLORS.white,
-            marginHorizontal: 20,
-            marginBottom: 20,
-            elevation: 5,
-          }}>
+        <View style={TrackStyle.containerTrack}>
           <View
             style={{
               flexDirection: 'row',
@@ -96,22 +81,8 @@ const TrackScreens = ({route, navigation}) => {
           <View style={{marginBottom: 20}}>
             {Date.map(e => {
               return (
-                <View
-                  key={e.id}
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <Text
-                    style={{
-                      width: '18%',
-                      paddingBottom: 20,
-                      borderRightWidth: 3,
-                      borderColor: COLORS.grey,
-                    }}>
-                    {e.date}
-                  </Text>
+                <View key={e.id} style={TrackStyle.containerMap}>
+                  <Text style={TrackStyle.textMap}>{e.date}</Text>
                   <View style={{position: 'absolute', left: 81, top: -5}}>
                     <RemixIcon
                       name="ri-checkbox-blank-circle-fill"
@@ -126,15 +97,7 @@ const TrackScreens = ({route, navigation}) => {
                     backgroundColor: COLORS.primary,
                   }}
                 /> */}
-                  <Text
-                    style={{
-                      width: '60%',
-                      paddingBottom: 20,
-                      marginLeft: 20,
-                      color: COLORS.primary,
-                    }}>
-                    {e.desc}
-                  </Text>
+                  <Text style={TrackStyle.textDesc}>{e.desc}</Text>
                 </View>
               );
             })}
