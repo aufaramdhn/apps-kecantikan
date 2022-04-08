@@ -216,6 +216,12 @@ const HomeScreens = ({navigation}) => {
       inputValue: dataLempar,
     });
   };
+  const signOut = () => {
+    FirebaseUtil.signOut().catch(e => {
+      console.log(e);
+      alert('Something went wrong');
+    });
+  };
 
   async function fetchData() {
     const Token = await AsyncStorage.getItem('token');
@@ -279,9 +285,10 @@ const HomeScreens = ({navigation}) => {
           }}>
           <TouchableOpacity
             onPress={() => {
-              onHandleChange(Face);
-              navigation.navigate('NewScreens');
-              onHandleNamePage('Face');
+              signOut();
+              // onHandleChange(Face);
+              // navigation.navigate('NewScreens');
+              // onHandleNamePage('Face');
             }}>
             <Text
               style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>

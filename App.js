@@ -1,44 +1,48 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
-  OnBoardScreens,
-  RegisterScreens,
+  //   OnBoardScreens,
+  //   RegisterScreens,
   LoginScreens,
-  PaymentScreens,
-  DetailScreens,
-  EditProfileScreens,
-  NewScreens,
-  ShoppingBagScreens,
-  Component1,
-  MessagesScreens,
-  ChatScreens,
-  NotificationScreens,
-  OrderScreens,
-  CartScreens,
-  TrackScreens,
-  VoucherScreens,
-  PromoScreens,
+  //   PaymentScreens,
+  //   DetailScreens,
+  //   EditProfileScreens,
+  //   NewScreens,
+  //   ShoppingBagScreens,
+  //   Component1,
+  //   MessagesScreens,
+  //   ChatScreens,
+  //   NotificationScreens,
+  //   OrderScreens,
+  //   CartScreens,
+  //   TrackScreens,
+  //   VoucherScreens,
+  //   PromoScreens,
 } from './src/screens';
 import Tabs from './src/navigations/Tabs';
-import BtnBack from './src/components/atoms/BtnBack';
-import BtnRightEditProfile from './src/components/atoms/BtnRightEditProfile';
-import BtnRightChat from './src/components/atoms/BtnRightChat';
-import BtnBackArrow from './src/components/atoms/BtnBackArrow';
-import BtnCart from './src/components/atoms/BtnCart';
-import BtnRightTrack from './src/components/atoms/BtnRightTrack';
-import {useSelector} from 'react-redux';
-import TextInputAtoms from './src/components/atoms/TextInputAtoms';
+// import BtnBack from './src/components/atoms/BtnBack';
+// import BtnRightEditProfile from './src/components/atoms/BtnRightEditProfile';
+// import BtnRightChat from './src/components/atoms/BtnRightChat';
+// import BtnBackArrow from './src/components/atoms/BtnBackArrow';
+// import BtnCart from './src/components/atoms/BtnCart';
+// import BtnRightTrack from './src/components/atoms/BtnRightTrack';
+// import {useSelector} from 'react-redux';
+// import TextInputAtoms from './src/components/atoms/TextInputAtoms';
+// import Router from './src/CRUD/routes';
+import LoginProvider, {LoginContext} from './src/utils/LoginProvider';
 
 const Stack = createNativeStackNavigator();
 
-function App() {
-  const NamePage = useSelector(state => state.NamePage);
+export default function App() {
+  // const NamePage = useSelector(state => state.NamePage);
+  const {user, isLoading} = useContext(LoginContext);
   return (
-    <NavigationContainer>
-      <Stack.Navigator intialRouteName={'CartScreens'}>
-        <Stack.Screen
+    <LoginProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          {/* <Stack.Screen
           name="OnBoardScreens"
           component={OnBoardScreens}
           options={{
@@ -51,22 +55,26 @@ function App() {
           options={{
             headerShown: false,
           }}
-        />
-        <Stack.Screen
-          name="LoginScreens"
-          component={LoginScreens}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="HomeScreens"
-          component={Tabs}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
+        /> */}
+          {user ? (
+            <Stack.Screen
+              name="HomeScreens"
+              component={Tabs}
+              options={{
+                headerShown: false,
+              }}
+            />
+          ) : (
+            <Stack.Screen
+              name="LoginScreens"
+              component={LoginScreens}
+              options={{
+                headerShown: false,
+              }}
+            />
+          )}
+
+          {/* <Stack.Screen
           name="PaymentScreens"
           component={PaymentScreens}
           options={{
@@ -247,12 +255,10 @@ function App() {
               return <TextInputAtoms />;
             },
           })}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+        /> */}
+        </Stack.Navigator>
+        {/* <Router /> */}
+      </NavigationContainer>
+    </LoginProvider>
   );
 }
-
-export default App;
-
-const styles = StyleSheet.create({});

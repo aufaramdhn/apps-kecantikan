@@ -16,6 +16,12 @@ import ListEvent from '../containers/organism/Event.organism';
 import {ProfileStyles} from '../styles/ProfileStyles';
 
 const ProfileScreens = ({navigation}) => {
+  const onHandleChange = dataLempar => {
+    dispatch({
+      type: 'SET_DATA_NAV',
+      inputValue: dataLempar,
+    });
+  };
   return (
     <SafeAreaView
       style={{

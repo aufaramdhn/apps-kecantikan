@@ -16,6 +16,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
+import FirebaseUtil from '../utils/FirebaseUtil';
 
 const Input = props => {
   return (
@@ -39,42 +40,42 @@ const Input = props => {
 };
 
 const LoginScreens = ({navigation}) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
   const [handlePassword, setHandlePassword] = useState(true);
 
-  const onHandle = async () => {
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-    await axios
-      .post('https://api-dev.betterjob.id/api/login', formData, {
-        headers: {
-          Accept: 'application/json',
-        },
-      })
-      .then(res => {
-        const storeToken = async () => {
-          await AsyncStorage.setItem('token', res.data.success.token);
-        };
-        storeToken();
-        navigation.navigate('HomeScreens');
-      })
-      .catch(e => {
-        console.log(e);
-        if (e.response) {
-          console.log('response');
-          console.log(e.response.data);
-          Alert.alert('error', 'error password');
-        } else if (e.request) {
-          console.log('request');
-          console.log(e.request.data);
-        } else {
-          console.log('other');
-          console.log(e.message);
-        }
-      });
-  };
+  // const onHandle = async () => {
+  //   const formData = new FormData();
+  //   formData.append('username', username);
+  //   formData.append('password', password);
+  //   await axios
+  //     .post('https://api-dev.betterjob.id/api/login', formData, {
+  //       headers: {
+  //         Accept: 'application/json',
+  //       },
+  //     })
+  //     .then(res => {
+  //       const storeToken = async () => {
+  //         await AsyncStorage.setItem('token', res.data.success.token);
+  //       };
+  //       storeToken();
+  //       navigation.navigate('HomeScreens');
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //       if (e.response) {
+  //         console.log('response');
+  //         console.log(e.response.data);
+  //         Alert.alert('error', 'error password');
+  //       } else if (e.request) {
+  //         console.log('request');
+  //         console.log(e.request.data);
+  //       } else {
+  //         console.log('other');
+  //         console.log(e.message);
+  //       }
+  //     });
+  // };
   // .post('https://api-dev.betterjob.id/api/login', formData, {
   //   headers: {
   //     Accept: 'application/json',
@@ -88,6 +89,24 @@ const LoginScreens = ({navigation}) => {
   // });
   // console.log(username);
   // console.log(password);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [create, setCreate] = useState(false);
+
+  const signIn = () => {
+    FirebaseUtil.signIn(email, password).catch(e => {
+      console.log(e);
+      alert('Email/Password is wrong');
+    });
+  };
+  const signUp = () => {
+    FirebaseUtil.signUp(email, password).catch(e => {
+      console.log(e);
+      alert('Something is went wrong');
+    });
+  };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -107,14 +126,20 @@ const LoginScreens = ({navigation}) => {
             paddingTop: 30,
             padding: 20,
           }}>
-          <Input
+          {/* <Input
             placeholder="username"
             title="Username"
             value={username}
             onChangeText={value => setUsername(value)}
             style={{fontSize: 18}}
+          /> */}
+          <Input
+            title="Email"
+            placeholder="email"
+            style={{fontSize: 18}}
+            value={email}
+            onChangeText={setEmail}
           />
-          <Input title="Email" placeholder="email" style={{fontSize: 18}} />
           <View style={{marginVertical: 10}}>
             <Text
               style={{marginBottom: 10, marginHorizontal: 10, color: 'black'}}>
@@ -125,7 +150,7 @@ const LoginScreens = ({navigation}) => {
                 placeholder="Password"
                 value={password}
                 secureTextEntry={handlePassword}
-                onChangeText={value => setPassword(value)}
+                onChangeText={setPassword}
                 style={{width: '90%', fontSize: 18}}
               />
               <TouchableOpacity
@@ -137,25 +162,51 @@ const LoginScreens = ({navigation}) => {
             </View>
           </View>
           <Text style={LoginStyles.TextForgotPass}>Lupa Kata Sandi ?</Text>
-          <ButtonPrimary
-            title="Masuk"
-            style={{marginVertical: 20}}
-            onPress={() => navigation.navigate('HomeScreens')}
-          />
-          <View style={LoginStyles.TextRegis}>
-            <Text>Belum Memiliki Akun?</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('RegisterScreens')}>
-              <Text
-                style={{
-                  color: '#4285F4',
-                  textDecorationLine: 'underline',
-                  marginLeft: 5,
-                }}>
-                Daftar
-              </Text>
-            </TouchableOpacity>
-          </View>
+          {create ? (
+            <>
+              <ButtonPrimary
+                title="Daftar"
+                style={{marginVertical: 20}}
+                onPress={() => signUp()}
+              />
+              <View style={LoginStyles.TextRegis}>
+                <Text>Sudah Memiliki Akun?</Text>
+                <TouchableOpacity>
+                  <Text
+                    style={{
+                      color: '#4285F4',
+                      textDecorationLine: 'underline',
+                      marginLeft: 5,
+                    }}
+                    onPress={() => setCreate(false)}>
+                    Masuk
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </>
+          ) : (
+            <>
+              <ButtonPrimary
+                title="Masuk"
+                style={{marginVertical: 20}}
+                onPress={() => signIn()}
+              />
+              <View style={LoginStyles.TextRegis}>
+                <Text>Belum Memiliki Akun?</Text>
+                <TouchableOpacity>
+                  <Text
+                    style={{
+                      color: '#4285F4',
+                      textDecorationLine: 'underline',
+                      marginLeft: 5,
+                    }}
+                    onPress={() => setCreate(true)}>
+                    Daftar
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
