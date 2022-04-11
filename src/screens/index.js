@@ -17,6 +17,7 @@ import OrderScreens from './OrderScreens';
 import TrackScreens from './TrackScreens';
 import VoucherScreens from './VoucherScreens';
 import PromoScreens from './PromoScreens';
+import Loading from './Loading';
 
 export {
   OnBoardScreens,
@@ -27,6 +28,7 @@ export {
   CartScreens,
   ChatScreens,
   PaymentScreens,
+  Loading,
   DetailScreens,
   EditProfileScreens,
   NewScreens,

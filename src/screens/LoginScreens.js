@@ -16,7 +16,9 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RemixIcon from 'react-native-remix-icon';
 import COLORS from '../constant/Colors';
-import FirebaseUtil from '../utils/FirebaseUtil';
+// import FirebaseUtil from '../utils/FirebaseUtil';
+import auth from '@react-native-firebase/auth';
+import {useNavigation} from '@react-navigation/native';
 
 const Input = props => {
   return (
@@ -39,7 +41,8 @@ const Input = props => {
   );
 };
 
-const LoginScreens = ({navigation}) => {
+const LoginScreens = () => {
+  const navigation = useNavigation();
   // const [username, setUsername] = useState('');
   // const [password, setPassword] = useState('');
   const [handlePassword, setHandlePassword] = useState(true);
@@ -95,16 +98,37 @@ const LoginScreens = ({navigation}) => {
   const [create, setCreate] = useState(false);
 
   const signIn = () => {
-    FirebaseUtil.signIn(email, password).catch(e => {
-      console.log(e);
-      alert('Email/Password is wrong');
-    });
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        console.log(res);
+        navigation.navigate('HomeScreens');
+      })
+      .catch(e => console.log(e));
+    // FirebaseUtil.signIn(email, password)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(e => {
+    //     console.log(e);
+    //     // alert('Email/Password is wrong');
+    //   });
   };
   const signUp = () => {
-    FirebaseUtil.signUp(email, password).catch(e => {
-      console.log(e);
-      alert('Something is went wrong');
-    });
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(e => console.log(e));
+    // FirebaseUtil.signUp(email, password)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(e => {
+    //     console.log(e);
+    //     // alert('Something is went wrong');
+    //   });
   };
 
   return (
@@ -138,7 +162,7 @@ const LoginScreens = ({navigation}) => {
             placeholder="email"
             style={{fontSize: 18}}
             value={email}
-            onChangeText={setEmail}
+            onChangeText={value => setEmail(value)}
           />
           <View style={{marginVertical: 10}}>
             <Text
@@ -150,7 +174,7 @@ const LoginScreens = ({navigation}) => {
                 placeholder="Password"
                 value={password}
                 secureTextEntry={handlePassword}
-                onChangeText={setPassword}
+                onChangeText={value => setPassword(value)}
                 style={{width: '90%', fontSize: 18}}
               />
               <TouchableOpacity

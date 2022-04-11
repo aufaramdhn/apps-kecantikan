@@ -41,7 +41,7 @@ const CardPopuler = ({item, statusRefresh}) => {
         style={NewStyles.containerCard}
         onPress={() => navigation.navigate('DetailScreens', {data: item})}>
         <View>
-          <Image source={item.image} style={NewStyles.image} />
+          <Image source={{uri: item.image}} style={NewStyles.image} />
           <Text style={NewStyles.textTitle}>{item.name}</Text>
           <Text style={{fontSize: 14, marginLeft: 10}}>{item.desc}</Text>
           <View style={NewStyles.wrapPrice}>

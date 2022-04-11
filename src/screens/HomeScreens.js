@@ -18,187 +18,247 @@ import axios from 'axios';
 import ListSkincare from '../containers/organism/ListSkincare';
 import ListSkincare2 from '../containers/organism/ListSkincare2';
 import ListBanner from '../containers/organism/ListBanner';
-import ListCategory from '../containers/organism/ListCategory';
+// import ListCategory from '../containers/organism/ListCategory';
 import {useDispatch} from 'react-redux';
+// import firestore from '@react-native-firebase/firestore';
+import database from '@react-native-firebase/database';
+import {firebase} from '@react-native-firebase/database';
 
 const HomeScreens = ({navigation}) => {
-  const Face = [
-    {
-      id: 1,
-      name: 'Cleanser',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/face-1.jpg'),
-    },
-    {
-      id: 2,
-      name: 'Facial Cleanser',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/face-2.jpg'),
-    },
-    {
-      id: 3,
-      name: 'Facial Cleanser',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/face-3.jpg'),
-    },
-    {
-      id: 4,
-      name: 'Facial Cleanser',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/face-4.jpg'),
-    },
-    {
-      id: 5,
-      name: 'Facial Cleanser',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/face-5.jpg'),
-    },
-    {
-      id: 6,
-      name: 'Facial Cleanser',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/face-6.jpg'),
-    },
-  ];
+  // const [item, setItem] = useState('');
 
-  const Body = [
-    {
-      id: 1,
-      name: 'Coffe Soap',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/body-1.jpg'),
-    },
-    {
-      id: 2,
-      name: 'Rice Soap',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/body-2.jpg'),
-    },
-    {
-      id: 3,
-      name: 'Brownsugar Soap',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/body-3.jpg'),
-    },
-    {
-      id: 4,
-      name: 'Jicama Soap',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/body-4.jpg'),
-    },
-    {
-      id: 5,
-      name: 'Fruit Soap',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/body-5.jpg'),
-    },
-    {
-      id: 6,
-      name: 'Charcoal Soap',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/body-6.jpg'),
-    },
-  ];
-  const Hair = [
-    {
-      id: 1,
-      name: 'Hair Oil',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/hair-1.jpg'),
-    },
-    {
-      id: 2,
-      name: 'Shampoo',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/hair-2.jpg'),
-    },
-    {
-      id: 3,
-      name: 'Hair Serum',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/hair-3.jpg'),
-    },
-    {
-      id: 4,
-      name: 'Hair Oil',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/hair-4.jpg'),
-    },
-    {
-      id: 5,
-      name: 'Conditioner',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/hair-5.jpg'),
-    },
-    {
-      id: 6,
-      name: 'Shampoo',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/hair-6.jpg'),
-    },
-  ];
-  const Tooth = [
-    {
-      id: 1,
-      name: 'Toothpaste',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/tooth-1.jpg'),
-    },
-    {
-      id: 2,
-      name: 'Toothpaste',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/tooth-2.jpg'),
-    },
-    {
-      id: 3,
-      name: 'Toothpaste',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/tooth-3.jpg'),
-    },
-    {
-      id: 4,
-      name: 'Toothpaste',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/tooth-4.jpg'),
-    },
-    {
-      id: 5,
-      name: 'Toothpaste',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/tooth-5.jpg'),
-    },
-    {
-      id: 6,
-      name: 'Toothpaste',
-      desc: 'Elemis superfood',
-      price: 'Rp.450.000',
-      image: require('../assets/product/tooth-6.jpg'),
-    },
-  ];
+  // const reference = firebase
+  //   .app()
+  //   .database(
+  //     'https://crud-4ef1e-default-rtdb.asia-southeast1.firebasedatabase.app/',
+  //   )
+  //   .ref('item/');
+
+  // const getData = database()
+  //   .ref('/item')
+  //   .on('value', snapshot => {
+  //     console.log('User data: ', snapshot.val());
+  //   });
+
+  // useEffect(() => {
+  //   setItem(getData);
+  // }, []);
+  function user() {
+    useEffect(() => {
+      const getData = database()
+        .ref('/item')
+        .on('value', snapshot => {
+          console.log('User data: ', snapshot.val());
+          getData();
+        });
+    }, []);
+  }
+
+  // const [face, setFace] = useState('');
+  // const [body, setBody] = useState('');
+  // const [hair, setHair] = useState('');
+  // const [tooth, setTooth] = useState('');
+
+  // async function getDataFace() {
+  //   const dataFace = await firestore().collection('facial').get();
+  //   setFace(dataFace.docs.map(item => item.data()));
+  // }
+  // async function getDataBody() {
+  //   const dataBody = await firestore().collection('body').get();
+  //   setBody(dataBody.docs.map(item => item.data()));
+  // }
+  // async function getDataHair() {
+  //   const dataHair = await firestore().collection('hair').get();
+  //   setHair(dataHair.docs.map(item => item.data()));
+  // }
+  // async function getDataTooth() {
+  //   const dataTooth = await firestore().collection('tooth').get();
+  //   setTooth(dataTooth.docs.map(item => item.data()));
+  // }
+  // useEffect(() => {
+  //   getDataFace();
+  //   getDataBody();
+  //   getDataHair();
+  //   getDataTooth();
+  // }, []);
+
+  // const Face = [
+  //   {
+  //     id: 1,
+  //     name: 'Cleanser',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/face-1.jpg'),
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Facial Cleanser',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/face-2.jpg'),
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Facial Cleanser',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/face-3.jpg'),
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'Facial Cleanser',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/face-4.jpg'),
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'Facial Cleanser',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/face-5.jpg'),
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'Facial Cleanser',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/face-6.jpg'),
+  //   },
+  // ];
+
+  // const Body = [
+  //   {
+  //     id: 1,
+  //     name: 'Coffe Soap',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/body-1.jpg'),
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Rice Soap',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/body-2.jpg'),
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Brownsugar Soap',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/body-3.jpg'),
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'Jicama Soap',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/body-4.jpg'),
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'Fruit Soap',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/body-5.jpg'),
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'Charcoal Soap',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/body-6.jpg'),
+  //   },
+  // ];
+  // const Hair = [
+  //   {
+  //     id: 1,
+  //     name: 'Hair Oil',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/hair-1.jpg'),
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Shampoo',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/hair-2.jpg'),
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Hair Serum',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/hair-3.jpg'),
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'Hair Oil',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/hair-4.jpg'),
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'Conditioner',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/hair-5.jpg'),
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'Shampoo',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/hair-6.jpg'),
+  //   },
+  // ];
+  // const Tooth = [
+  //   {
+  //     id: 1,
+  //     name: 'Toothpaste',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/tooth-1.jpg'),
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Toothpaste',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/tooth-2.jpg'),
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Toothpaste',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/tooth-3.jpg'),
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'Toothpaste',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/tooth-4.jpg'),
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'Toothpaste',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/tooth-5.jpg'),
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'Toothpaste',
+  //     desc: 'Elemis superfood',
+  //     price: 'Rp.450.000',
+  //     image: require('../assets/product/tooth-6.jpg'),
+  //   },
+  // ];
 
   const dispatch = useDispatch();
   const [refreshing, setRefreshing] = useState(false);
@@ -216,12 +276,12 @@ const HomeScreens = ({navigation}) => {
       inputValue: dataLempar,
     });
   };
-  const signOut = () => {
-    FirebaseUtil.signOut().catch(e => {
-      console.log(e);
-      alert('Something went wrong');
-    });
-  };
+  // const signOut = () => {
+  //   FirebaseUtil.signOut().catch(e => {
+  //     console.log(e);
+  //     alert('Something went wrong');
+  //   });
+  // };
 
   async function fetchData() {
     const Token = await AsyncStorage.getItem('token');
@@ -253,7 +313,7 @@ const HomeScreens = ({navigation}) => {
       });
   }
   useEffect(() => {
-    fetchData();
+    // fetchData();
   }, []);
 
   const onRefresh = React.useCallback(() => {
@@ -285,10 +345,9 @@ const HomeScreens = ({navigation}) => {
           }}>
           <TouchableOpacity
             onPress={() => {
-              signOut();
-              // onHandleChange(Face);
-              // navigation.navigate('NewScreens');
-              // onHandleNamePage('Face');
+              onHandleChange(getData);
+              navigation.navigate('NewScreens');
+              onHandleNamePage('Face');
             }}>
             <Text
               style={{marginHorizontal: 20, fontSize: 18, fontWeight: '400'}}>
@@ -297,7 +356,7 @@ const HomeScreens = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              onHandleChange(Body);
+              onHandleChange(body);
               navigation.navigate('NewScreens');
               onHandleNamePage('Body');
             }}>
@@ -308,7 +367,7 @@ const HomeScreens = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              onHandleChange(Hair);
+              onHandleChange(hair);
               navigation.navigate('NewScreens');
               onHandleNamePage('Hair');
             }}>
@@ -319,7 +378,7 @@ const HomeScreens = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              onHandleChange(Tooth);
+              onHandleChange(tooth);
               navigation.navigate('NewScreens');
               onHandleNamePage('Tooth');
             }}>

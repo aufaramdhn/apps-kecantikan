@@ -6,14 +6,33 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Skincare from '../../constant/DataSkincare';
 import COLORS from '../../constant/Colors';
 import RemixIcon from 'react-native-remix-icon';
 import {useNavigation} from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
 
 const ListSkincare = () => {
+  const [first, setfirst] = useState('');
+  async function getDataFirebase() {
+    const datafacial = await firestore().collection('facial').get();
+    // console.log(datafacial.docs.map(item => item.data()));
+    setfirst(datafacial.docs.map(item => item.data()));
+  }
+
+  useEffect(() => {
+    // const subscriber = firestore()
+    //   .collection('facial')
+    //   .onSnapshot(document => console.log('user data:', document));
+
+    // console.log(subscriber());
+    // return () => subscriber;
+    getDataFirebase();
+  }, []);
+
   const navigation = useNavigation();
+
   return (
     <View
       style={{
@@ -23,7 +42,7 @@ const ListSkincare = () => {
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={Skincare}
+        data={first}
         keyExtractor={item => item.id}
         style={{paddingLeft: 20, paddingRight: 20}}
         renderItem={({item}) => (
@@ -42,7 +61,7 @@ const ListSkincare = () => {
                   navigation.navigate('DetailScreens', {data: item})
                 }>
                 <Image
-                  source={item.image}
+                  source={{uri: item.image}}
                   style={{width: 165, height: 160, borderRadius: 20}}
                 />
                 <Text
@@ -54,7 +73,9 @@ const ListSkincare = () => {
                   }}>
                   {item.name}
                 </Text>
-                <Text style={{fontSize: 14, marginLeft: 10}}>{item.desc}</Text>
+                <Text style={{fontSize: 14, marginLeft: 10, width: '60%'}}>
+                  {item.desc}
+                </Text>
                 <View
                   style={{
                     flexDirection: 'row',
