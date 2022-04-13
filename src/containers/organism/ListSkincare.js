@@ -14,22 +14,22 @@ import {useNavigation} from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 
 const ListSkincare = () => {
-  const [first, setfirst] = useState('');
-  async function getDataFirebase() {
-    const datafacial = await firestore().collection('facial').get();
-    // console.log(datafacial.docs.map(item => item.data()));
-    setfirst(datafacial.docs.map(item => item.data()));
-  }
+  // const [first, setfirst] = useState('');
+  // async function getDataFirebase() {
+  //   const datafacial = await firestore().collection('facial').get();
+  //   // console.log(datafacial.docs.map(item => item.data()));
+  //   setfirst(datafacial.docs.map(item => item.data()));
+  // }
 
-  useEffect(() => {
-    // const subscriber = firestore()
-    //   .collection('facial')
-    //   .onSnapshot(document => console.log('user data:', document));
+  // useEffect(() => {
+  //   // const subscriber = firestore()
+  //   //   .collection('facial')
+  //   //   .onSnapshot(document => console.log('user data:', document));
 
-    // console.log(subscriber());
-    // return () => subscriber;
-    getDataFirebase();
-  }, []);
+  //   // console.log(subscriber());
+  //   // return () => subscriber;
+  //   getDataFirebase();
+  // }, []);
 
   const navigation = useNavigation();
 
@@ -42,7 +42,7 @@ const ListSkincare = () => {
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={first}
+        data={Skincare}
         keyExtractor={item => item.id}
         style={{paddingLeft: 20, paddingRight: 20}}
         renderItem={({item}) => (
@@ -61,7 +61,7 @@ const ListSkincare = () => {
                   navigation.navigate('DetailScreens', {data: item})
                 }>
                 <Image
-                  source={{uri: item.image}}
+                  source={item.image}
                   style={{width: 165, height: 160, borderRadius: 20}}
                 />
                 <Text

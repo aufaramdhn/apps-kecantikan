@@ -21,8 +21,8 @@ import ListBanner from '../containers/organism/ListBanner';
 // import ListCategory from '../containers/organism/ListCategory';
 import {useDispatch} from 'react-redux';
 // import firestore from '@react-native-firebase/firestore';
-import database from '@react-native-firebase/database';
-import {firebase} from '@react-native-firebase/database';
+// import database from '@react-native-firebase/database';
+// import {firebase} from '@react-native-firebase/database';
 
 const HomeScreens = ({navigation}) => {
   // const [item, setItem] = useState('');
@@ -43,16 +43,6 @@ const HomeScreens = ({navigation}) => {
   // useEffect(() => {
   //   setItem(getData);
   // }, []);
-  function user() {
-    useEffect(() => {
-      const getData = database()
-        .ref('/item')
-        .on('value', snapshot => {
-          console.log('User data: ', snapshot.val());
-          getData();
-        });
-    }, []);
-  }
 
   // const [face, setFace] = useState('');
   // const [body, setBody] = useState('');
@@ -82,183 +72,185 @@ const HomeScreens = ({navigation}) => {
   //   getDataTooth();
   // }, []);
 
-  // const Face = [
-  //   {
-  //     id: 1,
-  //     name: 'Cleanser',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/face-1.jpg'),
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Facial Cleanser',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/face-2.jpg'),
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Facial Cleanser',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/face-3.jpg'),
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Facial Cleanser',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/face-4.jpg'),
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'Facial Cleanser',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/face-5.jpg'),
-  //   },
-  //   {
-  //     id: 6,
-  //     name: 'Facial Cleanser',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/face-6.jpg'),
-  //   },
-  // ];
+  // console.log(face);
 
-  // const Body = [
-  //   {
-  //     id: 1,
-  //     name: 'Coffe Soap',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/body-1.jpg'),
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Rice Soap',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/body-2.jpg'),
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Brownsugar Soap',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/body-3.jpg'),
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Jicama Soap',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/body-4.jpg'),
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'Fruit Soap',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/body-5.jpg'),
-  //   },
-  //   {
-  //     id: 6,
-  //     name: 'Charcoal Soap',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/body-6.jpg'),
-  //   },
-  // ];
-  // const Hair = [
-  //   {
-  //     id: 1,
-  //     name: 'Hair Oil',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/hair-1.jpg'),
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Shampoo',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/hair-2.jpg'),
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Hair Serum',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/hair-3.jpg'),
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Hair Oil',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/hair-4.jpg'),
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'Conditioner',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/hair-5.jpg'),
-  //   },
-  //   {
-  //     id: 6,
-  //     name: 'Shampoo',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/hair-6.jpg'),
-  //   },
-  // ];
-  // const Tooth = [
-  //   {
-  //     id: 1,
-  //     name: 'Toothpaste',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/tooth-1.jpg'),
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Toothpaste',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/tooth-2.jpg'),
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Toothpaste',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/tooth-3.jpg'),
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Toothpaste',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/tooth-4.jpg'),
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'Toothpaste',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/tooth-5.jpg'),
-  //   },
-  //   {
-  //     id: 6,
-  //     name: 'Toothpaste',
-  //     desc: 'Elemis superfood',
-  //     price: 'Rp.450.000',
-  //     image: require('../assets/product/tooth-6.jpg'),
-  //   },
-  // ];
+  const Face = [
+    {
+      id: 1,
+      name: 'Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-1.jpg'),
+    },
+    {
+      id: 2,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-2.jpg'),
+    },
+    {
+      id: 3,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-3.jpg'),
+    },
+    {
+      id: 4,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-4.jpg'),
+    },
+    {
+      id: 5,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-5.jpg'),
+    },
+    {
+      id: 6,
+      name: 'Facial Cleanser',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/face-6.jpg'),
+    },
+  ];
+
+  const Body = [
+    {
+      id: 1,
+      name: 'Coffe Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-1.jpg'),
+    },
+    {
+      id: 2,
+      name: 'Rice Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-2.jpg'),
+    },
+    {
+      id: 3,
+      name: 'Brownsugar Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-3.jpg'),
+    },
+    {
+      id: 4,
+      name: 'Jicama Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-4.jpg'),
+    },
+    {
+      id: 5,
+      name: 'Fruit Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-5.jpg'),
+    },
+    {
+      id: 6,
+      name: 'Charcoal Soap',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/body-6.jpg'),
+    },
+  ];
+  const Hair = [
+    {
+      id: 1,
+      name: 'Hair Oil',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-1.jpg'),
+    },
+    {
+      id: 2,
+      name: 'Shampoo',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-2.jpg'),
+    },
+    {
+      id: 3,
+      name: 'Hair Serum',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-3.jpg'),
+    },
+    {
+      id: 4,
+      name: 'Hair Oil',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-4.jpg'),
+    },
+    {
+      id: 5,
+      name: 'Conditioner',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-5.jpg'),
+    },
+    {
+      id: 6,
+      name: 'Shampoo',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/hair-6.jpg'),
+    },
+  ];
+  const Tooth = [
+    {
+      id: 1,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-1.jpg'),
+    },
+    {
+      id: 2,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-2.jpg'),
+    },
+    {
+      id: 3,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-3.jpg'),
+    },
+    {
+      id: 4,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-4.jpg'),
+    },
+    {
+      id: 5,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-5.jpg'),
+    },
+    {
+      id: 6,
+      name: 'Toothpaste',
+      desc: 'Elemis superfood',
+      price: 'Rp.450.000',
+      image: require('../assets/product/tooth-6.jpg'),
+    },
+  ];
 
   const dispatch = useDispatch();
   const [refreshing, setRefreshing] = useState(false);
@@ -345,7 +337,7 @@ const HomeScreens = ({navigation}) => {
           }}>
           <TouchableOpacity
             onPress={() => {
-              onHandleChange(getData);
+              onHandleChange(Face);
               navigation.navigate('NewScreens');
               onHandleNamePage('Face');
             }}>
@@ -356,7 +348,7 @@ const HomeScreens = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              onHandleChange(body);
+              onHandleChange(Body);
               navigation.navigate('NewScreens');
               onHandleNamePage('Body');
             }}>
@@ -367,7 +359,7 @@ const HomeScreens = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              onHandleChange(hair);
+              onHandleChange(Hair);
               navigation.navigate('NewScreens');
               onHandleNamePage('Hair');
             }}>
@@ -378,7 +370,7 @@ const HomeScreens = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              onHandleChange(tooth);
+              onHandleChange(Tooth);
               navigation.navigate('NewScreens');
               onHandleNamePage('Tooth');
             }}>

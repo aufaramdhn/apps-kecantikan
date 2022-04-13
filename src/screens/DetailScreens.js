@@ -22,7 +22,7 @@ const DetailScreens = ({route, navigation}) => {
         <ScrollView>
           <View style={{flex: 1}}>
             <Image
-              source={{uri: route.params.data.image}}
+              source={route.params.data.image}
               style={DetailStyles.image}
             />
           </View>

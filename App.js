@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
@@ -33,16 +33,23 @@ import {useSelector} from 'react-redux';
 import TextInputAtoms from './src/components/atoms/TextInputAtoms';
 import Router from './src/CRUD/routes';
 import LoginProvider, {LoginContext} from './src/utils/LoginProvider';
+// import {requestUserPermission} from './src/utils/PushNotification';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const NamePage = useSelector(state => state.NamePage);
   const {user, isLoading} = useContext(LoginContext);
+
+  // useEffect(() => {
+  //   requestUserPermission();
+  //   NotificationListner();
+  // }, []);
+
   return (
     <LoginProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="OnBoardScreens">
+        <Stack.Navigator initialRouteName="HomeScreens">
           <Stack.Screen
             name="OnBoardScreens"
             component={OnBoardScreens}
