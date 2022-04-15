@@ -13,11 +13,22 @@ import RemixIcon from 'react-native-remix-icon';
 
 const Data = [
   {
-    id: 1,
+    id: 0,
     name: 'facial cleanser',
     desc: 'facial face vit c serum + lightening',
     var: '20 ml',
-    Price: 'Rp. 600.000',
+    price: 600000,
+    Image: require('../assets/product/face-3.jpg'),
+    select: 'all',
+    selected: false,
+    quantity: 0,
+  },
+  {
+    id: 1,
+    name: 'facial',
+    desc: 'facial face vit c serum + lightening',
+    var: '20 ml',
+    price: 600000,
     Image: require('../assets/product/face-3.jpg'),
     select: 'all',
     selected: false,
@@ -28,7 +39,7 @@ const Data = [
     name: 'facial',
     desc: 'facial face vit c serum + lightening',
     var: '20 ml',
-    Price: 'Rp. 600.000',
+    price: 600000,
     Image: require('../assets/product/face-3.jpg'),
     select: 'all',
     selected: false,
@@ -39,7 +50,7 @@ const Data = [
     name: 'facial',
     desc: 'facial face vit c serum + lightening',
     var: '20 ml',
-    Price: 'Rp. 600.000',
+    price: 600000,
     Image: require('../assets/product/face-3.jpg'),
     select: 'all',
     selected: false,
@@ -50,18 +61,7 @@ const Data = [
     name: 'facial',
     desc: 'facial face vit c serum + lightening',
     var: '20 ml',
-    Price: 'Rp. 600.000',
-    Image: require('../assets/product/face-3.jpg'),
-    select: 'all',
-    selected: false,
-    quantity: 0,
-  },
-  {
-    id: 5,
-    name: 'facial',
-    desc: 'facial face vit c serum + lightening',
-    var: '20 ml',
-    Price: 'Rp. 600.000',
+    price: 600000,
     Image: require('../assets/product/face-3.jpg'),
     select: 'all',
     selected: false,
@@ -69,115 +69,37 @@ const Data = [
   },
 ];
 
-const ListItem = ({item}) => {
-  const [total, setTotal] = useState(1);
+const CartScreens = () => {
+  const [qty, setQty] = useState(0);
   const [status, setStatus] = useState();
   const [selectedItem, setSelectItem] = useState(false);
+  const [total, setTotal] = useState(0);
 
-  const onHandleChangeIncrease = () => {
+  const onIncrease = id => {
     // const nextProducts = [...total];
     // nextProducts[index].quantity += 1;
-    setTotal(total + 1);
+    Data[id].quantity = Data[id].quantity + 1;
+    setQty(Data[id].quantity + 1);
+    setTotal(Data[id].price + total);
   };
-  const onHandleChangeDecrease = () => {
+
+  const onDecrease = id => {
     // const nextProducts = [...total];
-    if (total < 2) {
+    if (Data[id].quantity < 1) {
       // nextProducts[index].quantity == 1;
       // setTotal(nextProducts);
-      setTotal(1);
+      Data[id].quantity = 0;
+      Data[id].price = 0;
+      setQty(0);
+      setTotal(total - Data[id].price);
     } else {
       // nextProducts[index].quantity -= 1;
       // setTotal(nextProducts);
-      setTotal(total - 1);
+      Data[id].quantity = Data[id].quantity - 1;
+      setQty(Data[id].quantity - 1);
+      setTotal(total - Data[id].price);
     }
   };
-
-  return (
-    <View style={CartStyles.ContainerCart}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-evenly',
-        }}>
-        <TouchableOpacity
-          onPress={() => {
-            setStatus(item.id);
-            setSelectItem(item.selected);
-            setSelectItem(!selectedItem);
-            console.log(selectedItem);
-          }}>
-          <RemixIcon
-            name={
-              status === item.id && selectedItem === true
-                ? 'ri-checkbox-line'
-                : 'ri-checkbox-blank-line'
-            }
-            color={COLORS.primary}
-          />
-        </TouchableOpacity>
-        <Image source={item.Image} style={{width: 70, height: 70}} />
-        <View>
-          <Text
-            style={{
-              fontSize: 16,
-              fontWeight: '600',
-              color: COLORS.black,
-            }}>
-            {item.name}
-          </Text>
-          <Text
-            style={{
-              fontSize: 14,
-              fontWeight: '600',
-              color: COLORS.primary,
-            }}>
-            {item.desc}
-          </Text>
-          <Text
-            style={{
-              fontSize: 14,
-              fontWeight: '600',
-              color: COLORS.black,
-            }}>
-            Variasi: {item.var}
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <Text
-              style={{
-                fontSize: 14,
-                fontWeight: '600',
-                color: 'red',
-              }}>
-              {item.Price}
-            </Text>
-            <Text>{total}</Text>
-          </View>
-        </View>
-      </View>
-      <View style={CartStyles.ContainerBtnAddSub}>
-        <View style={CartStyles.BtnAddSub}>
-          <TouchableOpacity onPress={() => onHandleChangeDecrease()}>
-            <RemixIcon
-              name="ri-indeterminate-circle-line"
-              color={COLORS.primary}
-            />
-          </TouchableOpacity>
-          <Text>{total}</Text>
-          <TouchableOpacity onPress={() => onHandleChangeIncrease()}>
-            <RemixIcon name="ri-add-circle-line" color={COLORS.primary} />
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
-  );
-};
-
-const CartScreens = () => {
   // const [selectAll, setSelectAll] = useState();
   // const [products, setProducts] = useState(Data);
   // const onSubtract = (item, index) => {
@@ -198,7 +120,6 @@ const CartScreens = () => {
   //   totalQuantity += item.quantity;
   //   totalPrice += item.quantity * item.Price;
   // });
-
   return (
     <View style={{height: '100%'}}>
       <View style={CartStyles.ContainerHeader}>
@@ -207,7 +128,93 @@ const CartScreens = () => {
       <FlatList
         data={Data}
         keyExtractor={item => item.id}
-        renderItem={({item}) => <ListItem item={item} />}
+        renderItem={({item}) => (
+          <View style={CartStyles.ContainerCart}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-evenly',
+              }}>
+              <TouchableOpacity
+                onPress={() => {
+                  item.selected = !item.selected;
+                  setStatus(item.id);
+                  // setSelectItem(item.selected);
+                  // setSelectItem(!selectedItem);
+                  // console.log(selectedItem);
+                  console.log(item.selected);
+                  console.log(item.id);
+                  console.log(status);
+                }}>
+                <RemixIcon
+                  name={
+                    item.selected === true
+                      ? 'ri-checkbox-line'
+                      : 'ri-checkbox-blank-line'
+                  }
+                  color={COLORS.primary}
+                />
+              </TouchableOpacity>
+              <Image source={item.Image} style={{width: 70, height: 70}} />
+              <View>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: '600',
+                    color: COLORS.black,
+                  }}>
+                  {item.name}
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    fontWeight: '600',
+                    color: COLORS.primary,
+                  }}>
+                  {item.desc}
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    fontWeight: '600',
+                    color: COLORS.black,
+                  }}>
+                  Variasi: {item.var}
+                </Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 14,
+                      fontWeight: '600',
+                      color: 'red',
+                    }}>
+                    {item.price}
+                  </Text>
+                  <Text>{item.quantity}</Text>
+                </View>
+              </View>
+            </View>
+            <View style={CartStyles.ContainerBtnAddSub}>
+              <View style={CartStyles.BtnAddSub}>
+                <TouchableOpacity onPress={() => onDecrease(item.id)}>
+                  <RemixIcon
+                    name="ri-indeterminate-circle-line"
+                    color={COLORS.primary}
+                  />
+                </TouchableOpacity>
+                <Text>{item.quantity}</Text>
+                <TouchableOpacity onPress={() => onIncrease(item.id)}>
+                  <RemixIcon name="ri-add-circle-line" color={COLORS.primary} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        )}
       />
       <View
         style={{
@@ -252,7 +259,7 @@ const CartScreens = () => {
                 marginRight: 8,
               }}>
               <Text style={{color: COLORS.black, fontWeight: 'bold'}}>
-                Rp. 1.440.000
+                Rp. {total}
               </Text>
               <Text
                 style={{
@@ -275,7 +282,7 @@ const CartScreens = () => {
                   color: COLORS.white,
                   fontWeight: 'bold',
                 }}>
-                Checkout (5)
+                Checkout {qty}
               </Text>
             </TouchableOpacity>
           </View>
