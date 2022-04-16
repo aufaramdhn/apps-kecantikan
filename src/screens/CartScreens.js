@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import COLORS from '../constant/Colors';
 import {CartStyles} from '../styles/CartStyles';
 import RemixIcon from 'react-native-remix-icon';
@@ -69,11 +69,23 @@ const Data = [
   },
 ];
 
-const CartScreens = () => {
+const CartScreens = ({navigation}) => {
+  // const [allData, setAllData] = useState([]);
+  // useEffect(() => {
+  //   setAllData(Data);
+  // }, [Data]);
+  // const update = () => {
+  //   setAllData(Data);
+  // };
   const [qty, setQty] = useState(0);
-  const [status, setStatus] = useState();
-  const [selectedItem, setSelectItem] = useState(false);
+  // const [status, setStatus] = useState();
+  // const [selectedItem, setSelectItem] = useState(false);
+  const [selectedItem, setSelectItem] = useState({
+    id: 0,
+    status: false,
+  });
   const [total, setTotal] = useState(0);
+  const [statusAll, setStatusAll] = useState(false);
 
   const onIncrease = id => {
     // const nextProducts = [...total];
@@ -120,6 +132,8 @@ const CartScreens = () => {
   //   totalQuantity += item.quantity;
   //   totalPrice += item.quantity * item.Price;
   // });
+
+  // console.log(allData);
   return (
     <View style={{height: '100%'}}>
       <View style={CartStyles.ContainerHeader}>
@@ -139,13 +153,17 @@ const CartScreens = () => {
               <TouchableOpacity
                 onPress={() => {
                   item.selected = !item.selected;
-                  setStatus(item.id);
+                  // setStatus(item.id);
                   // setSelectItem(item.selected);
                   // setSelectItem(!selectedItem);
+                  setSelectItem({
+                    ...selectedItem,
+                    ['id']: item.id,
+                    ['status']: item.selected,
+                  });
+                  // console.log('status: ', item.selected);
+                  // console.log('id: ', item.id);
                   // console.log(selectedItem);
-                  console.log(item.selected);
-                  console.log(item.id);
-                  console.log(status);
                 }}>
                 <RemixIcon
                   name={
@@ -242,8 +260,21 @@ const CartScreens = () => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               style={{marginRight: 5}}
-              onPress={() => navigation.navigate()}>
-              <RemixIcon name="ri-checkbox-blank-line" color={COLORS.grey} />
+              onPress={() => {
+                for (let i = 0; i < Data.length; i++) {
+                  Data[i].selected = !Data[i].selected;
+                  setStatusAll(!statusAll);
+                  // update();
+                }
+              }}>
+              <RemixIcon
+                name={
+                  statusAll === false
+                    ? 'ri-checkbox-blank-line'
+                    : 'ri-checkbox-line'
+                }
+                color={COLORS.grey}
+              />
             </TouchableOpacity>
             <Text>Semua</Text>
           </View>
