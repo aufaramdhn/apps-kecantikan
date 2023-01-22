@@ -159,10 +159,10 @@ const LoginScreens = () => {
           /> */}
           <Input
             title="Email"
-            placeholder="email"
-            style={{fontSize: 18}}
-            value={email}
-            onChangeText={value => setEmail(value)}
+            // placeholder="email"
+            // style={{fontSize: 18}}
+            // value={email}
+            // onChangeText={value => setEmail(value)}
           />
           <View style={{marginVertical: 10}}>
             <Text
@@ -172,9 +172,9 @@ const LoginScreens = () => {
             <View style={LoginStyles.InputPassword}>
               <TextInput
                 placeholder="Password"
-                value={password}
-                secureTextEntry={handlePassword}
-                onChangeText={value => setPassword(value)}
+                // value={password}
+                // secureTextEntry={handlePassword}
+                // onChangeText={value => setPassword(value)}
                 style={{width: '90%', fontSize: 18}}
               />
               <TouchableOpacity
@@ -213,7 +213,8 @@ const LoginScreens = () => {
               <ButtonPrimary
                 title="Masuk"
                 style={{marginVertical: 20}}
-                onPress={() => signIn()}
+                // onPress={() => signIn()}
+                onPress={() => navigation.navigate('HomeScreens')}
               />
               <View style={LoginStyles.TextRegis}>
                 <Text>Belum Memiliki Akun?</Text>
@@ -224,7 +225,9 @@ const LoginScreens = () => {
                       textDecorationLine: 'underline',
                       marginLeft: 5,
                     }}
-                    onPress={() => setCreate(true)}>
+                    onPress={() => navigation.navigate('HomeScreens')}
+                    // onPress={() => setCreate(true)}
+                  >
                     Daftar
                   </Text>
                 </TouchableOpacity>

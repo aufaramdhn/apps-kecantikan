@@ -49,7 +49,7 @@ export default function App() {
   return (
     <LoginProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="HomeScreens">
+        <Stack.Navigator initialRouteName="OnBoardScreens">
           <Stack.Screen
             name="OnBoardScreens"
             component={OnBoardScreens}
@@ -65,13 +65,13 @@ export default function App() {
             }}
           />
 
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Loading"
             component={Loading}
             options={{
               headerShown: false,
             }}
-          /> */}
+          />
 
           <Stack.Screen
             name="HomeScreens"

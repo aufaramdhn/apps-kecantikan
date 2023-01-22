@@ -15,7 +15,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import SkeletonContent from 'react-native-skeleton-content-nonexpo';
 import {NewStyles} from '../styles/NewStyles';
-// import {database, firebase} from '@react-native-firebase/database';
+import {database, firebase} from '@react-native-firebase/database';
 
 const CardPopuler = ({item, statusRefresh}) => {
   const navigation = useNavigation();
@@ -74,29 +74,29 @@ const PromoScreens = ({statusRefresh}) => {
     }, 5000);
   }, []);
 
-  // useEffect(() => {
-  //   function reference() {
-  //     firebase
-  //       .app()
-  //       .database(
-  //         'https://crud-4ef1e-default-rtdb.asia-southeast1.firebasedatabase.app',
-  //       )
-  //       .ref('/item/body')
-  //       .on('value', snapshot => {
-  //         // console.log('User data: ', snapshot.val());
-  //         // setFirst(snapshot.val());
-  //         let dataArray = {};
-  //         snapshot.forEach(childSnapshot => {
-  //           dataArray[childSnapshot.key] = childSnapshot.val();
-  //           console.log(childSnapshot.key);
-  //         });
-  //         let convert = JSON.stringify(dataArray);
-  //         console.log(convert);
-  //       });
-  //   }
-  //   reference();
-  // }, []);
-  // console.log(first);
+  useEffect(() => {
+    function reference() {
+      firebase
+        .app()
+        .database(
+          'https://crud-4ef1e-default-rtdb.asia-southeast1.firebasedatabase.app',
+        )
+        .ref('/item/body')
+        .on('value', snapshot => {
+          // console.log('User data: ', snapshot.val());
+          // setFirst(snapshot.val());
+          let dataArray = {};
+          snapshot.forEach(childSnapshot => {
+            dataArray[childSnapshot.key] = childSnapshot.val();
+            console.log(childSnapshot.key);
+          });
+          let convert = JSON.stringify(dataArray);
+          console.log(convert);
+        });
+    }
+    reference();
+  }, []);
+  console.log(first);
   return (
     <ScrollView>
       <View style={{padding: 10}}>

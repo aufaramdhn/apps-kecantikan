@@ -33,7 +33,7 @@ export const EditProfileStyles = StyleSheet.create({
   textPicker: {
     fontSize: 16,
     fontWeight: '400',
-    color: '#1d1d1d',
+    // color: '#1d1d1d',
     marginBottom: 10,
   },
   containerKodePos: {
